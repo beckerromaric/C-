@@ -15,13 +15,9 @@ namespace ExerciceBouteille
             Console.WriteLine("La capacité de la bouteille est " + bottle.GetCapacity());
 
             bool close = bottle.Close();
-
             double pleine = bottle.Fill();
-            double moitiePlein = bottle.Fill(0.7d);
-            double vider = bottle.Empty();
-            double moitieVide = bottle.Empty(0.5d);
 
-            Console.WriteLine(moitiePlein);
+
 
             //bool open = bottle.Open();
             //double fill = bottle.Fill();
@@ -44,6 +40,17 @@ namespace ExerciceBouteille
             //double v = bottle.Empty();
             //Console.WriteLine(v);
 
+            //----------------------------------------------------------------
+            //Exemple ternaire
+
+            bool isOpen = true;
+
+            string str = (isOpen ? "ouverte" : "fermée");
+            Console.WriteLine("La bouteille est {0}", str);
+
+
+            // meme version qu'au dessus mais en raccourcis 
+            Console.WriteLine("La bouteille est {0}", isOpen ? "ouverte" : "fermée");
 
 
             Console.ReadLine();
