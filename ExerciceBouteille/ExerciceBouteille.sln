@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExerciceBouteille", "ExerciceBouteille\ExerciceBouteille.csproj", "{12A45442-4D43-4D87-B347-0774A74D8C3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExercicesBouteilleChoix", "ExercicesBouteilleChoix\ExercicesBouteilleChoix.csproj", "{AEF1D5D6-40CF-439E-A9D9-64639DCB6403}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{12A45442-4D43-4D87-B347-0774A74D8C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12A45442-4D43-4D87-B347-0774A74D8C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12A45442-4D43-4D87-B347-0774A74D8C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF1D5D6-40CF-439E-A9D9-64639DCB6403}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF1D5D6-40CF-439E-A9D9-64639DCB6403}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF1D5D6-40CF-439E-A9D9-64639DCB6403}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF1D5D6-40CF-439E-A9D9-64639DCB6403}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
