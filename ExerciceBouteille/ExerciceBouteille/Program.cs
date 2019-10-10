@@ -14,8 +14,8 @@ namespace ExerciceBouteille
 
             Console.WriteLine("La capacité de la bouteille est " + bottle.GetCapacity());
 
-            bool close = bottle.Close();
-            double pleine = bottle.Fill();
+            bool close = bottle.Open();
+            //double pleine = bottle.Fill();
 
 
 
@@ -31,8 +31,8 @@ namespace ExerciceBouteille
             //double r = bottle.Fill();
             //Console.WriteLine(r);
 
-            //double vp = bottle.Empty(0.5d);
-            //Console.WriteLine(vp);
+            double vp = bottle.Empty(0.5d);
+            Console.WriteLine(vp);
 
             //double rp = bottle.Fill(0.5d);
             //Console.WriteLine(rp);

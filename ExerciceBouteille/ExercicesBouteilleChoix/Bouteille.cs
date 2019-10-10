@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ExerciceBouteilleChoix
 {
-    class Bottle
+    class Bouteille
     {
         private Boolean isOpen;
         private double capacity;
         private double currentVolume;
 
-        public Bottle(double _volume)
+        public Bouteille(double _volume)
         {
             this.capacity = _volume;
             this.isOpen = false;

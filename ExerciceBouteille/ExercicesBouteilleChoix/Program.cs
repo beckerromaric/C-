@@ -10,7 +10,14 @@ namespace ExercicesBouteilleChoix
     {
         static void Main(string[] args)
         {
+            
 
+            Console.WriteLine("|_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|\n"+
+                              "|_-_-_-_-Exercice d'ouverture de la bouteille-_-_-_-_|\n"+
+                              "|_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-|");
+
+            
+            Console.ReadLine();
         }
     }
 }
