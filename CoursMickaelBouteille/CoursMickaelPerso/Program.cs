@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoursMickaelBouteille
+namespace CoursMickaelPerso
 {
     class Program
     {
@@ -18,7 +18,7 @@ namespace CoursMickaelBouteille
                 Console.WriteLine(_message);
                 saisie = Console.ReadLine();
             }
-            while(!double.TryParse(saisie, out number));
+            while (!double.TryParse(saisie, out number));
 
             return number;
         }
@@ -30,6 +30,7 @@ namespace CoursMickaelBouteille
             Bottle bottle;
             ConsoleKey inputKey;
             string ouvertFerme;
+            double resultat;
             //débugger F11 pour étape suivante
             Console.WriteLine("Programme bouteille");
 
@@ -39,7 +40,7 @@ namespace CoursMickaelBouteille
 
             do
             {
-                Console.WriteLine("Quelle opération souhaitez vous effectuer ? ");
+                Console.WriteLine("\nQuelle opération souhaitez vous effectuer ? ");
                 Console.WriteLine("1: Ouvrir (O)");
                 Console.WriteLine("2: Fermer (F)");
                 Console.WriteLine("3: Remplir la bouteille (R)");
@@ -53,7 +54,7 @@ namespace CoursMickaelBouteille
                 switch (inputKey)
                 {
                     case ConsoleKey.O:
-                        
+
                         ouvertFerme = bottle.Open() ? "ouverte\n" : "fermée\n";
                         Console.WriteLine("\n\nLa bouteille est " + ouvertFerme);
                         break;
@@ -64,19 +65,25 @@ namespace CoursMickaelBouteille
                         break;
 
                     case ConsoleKey.R:
-                        
+                        bottle.Fill();
+                        Console.WriteLine("\nLa bouteille est remplie! Elle contient {0}L\n", bottle.Fill());
                         break;
 
                     case ConsoleKey.V:
-
+                        bottle.Empty();
+                        Console.WriteLine("\nLa bouteille est vide! Elle contient maintenant {0}\n", bottle.Empty());
                         break;
 
                     case ConsoleKey.OemPlus:
-                        Console.WriteLine("Reussi +");
+                        resultat = SaisieDouble("\nDe combien de cl voulez remplir la bouteille ?\n");
+                        bottle.Fill(resultat);
+                        Console.WriteLine("\nLa bouteille contient désormais " + bottle.Fill(resultat) + "L");
                         break;
 
                     case ConsoleKey.Subtract:
-                        Console.WriteLine("Reussi! - ");
+                        resultat = SaisieDouble("\nDe combien de cl voulez vous vider la bouteille ?\n");
+                        bottle.Empty(resultat);
+                        Console.WriteLine("\nLa bouteille contient désormais "+ bottle.Empty(resultat) + "L\n");
                         break;
 
                     case ConsoleKey.Q:
@@ -87,23 +94,6 @@ namespace CoursMickaelBouteille
             while (ConsoleKey.Q != inputKey);
 
             Console.WriteLine("\nBye !");
-
-            Console.ReadLine();
-
-
-            Bottle bouteille = new Bottle(2);
-
-            //Console.WriteLine("Etat bouteille" + bouteille.Open());
-            Console.WriteLine("Etat bouteille" + bouteille.Close());
-
-            Console.WriteLine("Remplissage bouteille son volume est : ");
-            Console.WriteLine(bouteille.fill(0.5d));
-
-            Console.WriteLine("Vidage bouteille son volume est : ");
-            Console.WriteLine(bouteille.Empty(-5));
-
-
-
 
             Console.ReadLine();
         }

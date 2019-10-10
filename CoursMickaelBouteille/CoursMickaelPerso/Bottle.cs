@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoursMickaelBouteille
+namespace CoursMickaelPerso
 {
     class Bottle
     {
@@ -20,7 +20,7 @@ namespace CoursMickaelBouteille
             this.capacity = _capacity;
             this.isOpen = false;
             this.currentVolume = 0;
-        } 
+        }
 
         public bool Open()
         {
@@ -46,7 +46,7 @@ namespace CoursMickaelBouteille
 
         public double Fill(double _quantity)
         {
-            if ((isOpen) && (_quantity > 0) &&((this.currentVolume + _quantity) <= capacity))
+            if ((isOpen) && (_quantity > 0) && ((this.currentVolume + _quantity) <= capacity))
             {
                 currentVolume += _quantity;
             }
@@ -67,7 +67,7 @@ namespace CoursMickaelBouteille
         {
             if ((isOpen) && (_quantity > 0))
             {
-                if(_quantity < currentVolume)
+                if (_quantity < currentVolume)
                 {
                     currentVolume -= _quantity;
                 }
@@ -90,3 +90,4 @@ namespace CoursMickaelBouteille
         }
     }
 }
+
