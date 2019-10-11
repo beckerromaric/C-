@@ -29,12 +29,13 @@ namespace CoursMickaelPerso
             double number;
             Bottle bottle;
             ConsoleKey inputKey;
-            string ouvertFerme;
+            string ouvertFerme = "fermée";
             double resultat;
             //débugger F11 pour étape suivante
+            Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-");
             Console.WriteLine("Programme bouteille");
-
-            number = SaisieDouble("Quelle capacité souhaitez-vous ?");
+            Console.WriteLine("-_-_-_-_-_-_-_-_-_-_-\n");
+            number = SaisieDouble("Quelle capacité souhaitez-vous ?\n");
 
             bottle = new Bottle(number);
 
@@ -45,46 +46,95 @@ namespace CoursMickaelPerso
                 Console.WriteLine("2: Fermer (F)");
                 Console.WriteLine("3: Remplir la bouteille (R)");
                 Console.WriteLine("4: Vider la bouteille (V)");
-                Console.WriteLine("5: Remplir totalement la bouteille (+)");
-                Console.WriteLine("6: Vider totalement la bouteille (-)");
+                Console.WriteLine("5: Remplir partiellement la bouteille (+)");
+                Console.WriteLine("6: Vider partiellement la bouteille (-)");
                 Console.WriteLine("7: Quitter le programme (Q)");
 
                 inputKey = Console.ReadKey().Key;
 
                 switch (inputKey)
                 {
-                    case ConsoleKey.O:
-
-                        ouvertFerme = bottle.Open() ? "ouverte\n" : "fermée\n";
-                        Console.WriteLine("\n\nLa bouteille est " + ouvertFerme);
+                    case ConsoleKey.O:             
+                        ouvertFerme = bottle.Open() ? "ouverte" : "fermée";
+                        Console.WriteLine("\n\nLa bouteille est " + ouvertFerme + "\n");
                         break;
 
                     case ConsoleKey.F:
-                        ouvertFerme = bottle.Close() ? "ouverte\n" : "fermée\n";
-                        Console.WriteLine("\n\nLa bouteille est " + ouvertFerme);
+                        ouvertFerme = bottle.Close() ? "ouverte" : "fermée";
+                        Console.WriteLine("\n\nLa bouteille est " + ouvertFerme + "\n");
                         break;
 
                     case ConsoleKey.R:
-                        bottle.Fill();
-                        Console.WriteLine("\nLa bouteille est remplie! Elle contient {0}L\n", bottle.Fill());
+                        if(ouvertFerme == "ouverte")
+                        {
+                            bottle.Fill();
+                            Console.WriteLine("\nLa bouteille est remplie! Elle contient {0}L\n", bottle.Fill());
+                        }
+                        else
+                        {
+                            
+                            Console.WriteLine("\nVous ne pouvez pas remplir la bouteille car elle est fermée !!\n");
+                        }
                         break;
 
                     case ConsoleKey.V:
-                        bottle.Empty();
-                        Console.WriteLine("\nLa bouteille est vide! Elle contient maintenant {0}\n", bottle.Empty());
+                        if(ouvertFerme == "fermée")
+                        {
+                            Console.WriteLine("\nLa bouteille est fermée vous ne pouvez pas la vider !\n");
+                        }
+                        else
+                        {
+                            bottle.Empty();
+                            Console.WriteLine("\nLa bouteille est vide! Elle contient maintenant {0}\n", bottle.Empty());
+                        }
                         break;
 
                     case ConsoleKey.OemPlus:
-                        resultat = SaisieDouble("\nDe combien de cl voulez remplir la bouteille ?\n");
-                        bottle.Fill(resultat);
-                        Console.WriteLine("\nLa bouteille contient désormais " + bottle.Fill(resultat) + "L");
+                        if (ouvertFerme == "ouverte")
+                        {
+                            resultat = SaisieDouble("\nDe combien de cl voulez remplir la bouteille ?\n");
+                            resultat = bottle.Fill(resultat);
+                            if (resultat < bottle.GetCapacity())
+                            {
+                                
+                                Console.WriteLine("\nLa bouteille contient désormais " + resultat + "L");
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nVous ne pouvez pas remplir la bouteille car vous dépassez la capacité !!\n");    
+                            }                           
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nVous ne pouvez pas remplir la bouteille car elle est fermée !!\n");
+                        }
                         break;
 
                     case ConsoleKey.Subtract:
-                        resultat = SaisieDouble("\nDe combien de cl voulez vous vider la bouteille ?\n");
-                        bottle.Empty(resultat);
-                        Console.WriteLine("\nLa bouteille contient désormais "+ bottle.Empty(resultat) + "L\n");
+                        if (ouvertFerme == "ouverte")
+                        {
+                            resultat = SaisieDouble("\nDe combien de cl voulez vous vider la bouteille ?\n");
+                            resultat = bottle.Empty(resultat);
+
+                            if(resultat > bottle.GetCapacity())
+                            {
+                                Console.WriteLine("\nLa bouteille contient désormais " + resultat + "L\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Vous essayez de vider plus que possible, remise a {0}", resultat);
+                            }
+                            
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nVous ne pouvez pas vider la bouteille car elle est fermée !!\n");
+                        }
+                        
+                        
                         break;
+
+                        
 
                     case ConsoleKey.Q:
 
