@@ -92,7 +92,7 @@ namespace CoursMickaelPerso
                     case ConsoleKey.OemPlus:
                         if (ouvertFerme == "ouverte")
                         {
-                            resultat = SaisieDouble("\nDe combien de cl voulez remplir la bouteille ?\n");
+                            resultat = SaisieDouble("\nDe combien de cl voulez-vous remplir la bouteille ?\n");
                             resultat = bottle.Fill(resultat);
                             if (resultat < bottle.GetCapacity())
                             {
@@ -113,7 +113,7 @@ namespace CoursMickaelPerso
                     case ConsoleKey.Subtract:
                         if (ouvertFerme == "ouverte")
                         {
-                            resultat = SaisieDouble("\nDe combien de cl voulez vous vider la bouteille ?\n");
+                            resultat = SaisieDouble("\nDe combien de L voulez vous vider la bouteille ?\n");
                             resultat = bottle.Empty(resultat);
 
                             if(resultat > bottle.GetCapacity())
