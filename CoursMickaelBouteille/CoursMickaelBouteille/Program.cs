@@ -29,7 +29,7 @@ namespace CoursMickaelBouteille
             double number;
             Bottle bottle;
             ConsoleKey inputKey;
-            string ouvertFerme;
+            string ouvertFerme = "fermée";
             //débugger F11 pour étape suivante
             Console.WriteLine("Programme bouteille");
 
@@ -54,29 +54,66 @@ namespace CoursMickaelBouteille
                 {
                     case ConsoleKey.O:
                         
-                        ouvertFerme = bottle.Open() ? "ouverte\n" : "fermée\n";
+                        ouvertFerme = bottle.Open() ? "ouverte" : "fermée";
                         Console.WriteLine("\n\nLa bouteille est " + ouvertFerme);
                         break;
 
                     case ConsoleKey.F:
-                        ouvertFerme = bottle.Close() ? "ouverte\n" : "fermée\n";
-                        Console.WriteLine("\n\nLa bouteille est " + ouvertFerme);
+                        ouvertFerme = bottle.Close() ? "ouverte" : "fermée";
+                        Console.WriteLine("\n\nLa bouteille est " + ouvertFerme + "\n");
                         break;
 
                     case ConsoleKey.R:
-                        
+                        if (ouvertFerme == "ouverte")
+                        {
+                            bottle.Fill();
+                            Console.WriteLine("\nLa bouteille est remplie, elle contient: " + bottle.GetCurrentVolume() + "L\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nLa bouteille est fermée !!");
+                        }           
                         break;
 
                     case ConsoleKey.V:
-
+                        if(ouvertFerme == "fermée")
+                        {
+                            Console.WriteLine("\nLa bouteille est fermée !!\n");
+                        }
+                        else
+                        {
+                            bottle.Empty();
+                            Console.WriteLine("\nLa bouteille est vide, elle contient maintenant {0}L\n", bottle.GetCurrentVolume());
+                        }
                         break;
 
-                    case ConsoleKey.OemPlus:
-                        Console.WriteLine("Reussi +");
+                    case ConsoleKey.Add:
+                       
+                        if(ouvertFerme == "ouverte")
+                        {
+                            number = SaisieDouble("De combien de L voulez vous remplir la bouteille ?");
+                            bottle.Fill(number);
+                            Console.WriteLine("\nLa bouteille contient maintenant " + bottle.GetCurrentVolume() + "L\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nLa bouteille est fermée !!");
+                        }          
                         break;
 
                     case ConsoleKey.Subtract:
-                        Console.WriteLine("Reussi! - ");
+
+                        if(ouvertFerme == "ouverte")
+                        {
+                            number = SaisieDouble("De combien de L voulez vous vider la bouteille ?");
+                            bottle.Empty(number);
+                            Console.WriteLine("\nLa bouteille contient maintenant " + bottle.GetCurrentVolume() + "L\n");
+                        }
+                        else
+                        {
+                            Console.WriteLine("La bouteille est fermée !!");
+                        }
+                        
                         break;
 
                     case ConsoleKey.Q:

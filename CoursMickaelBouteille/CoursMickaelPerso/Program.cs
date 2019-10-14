@@ -135,16 +135,15 @@ namespace CoursMickaelPerso
                         {
                             resultat = SaisieDouble("\nDe combien de L voulez vous vider la bouteille ?\n");
                             substract = bottle.GetCurrentVolume() - resultat;
-                            if(substract >= 0)
+                            if(substract < 0)
                             {
-
                                 resultat = bottle.Empty(resultat);
-                                Console.WriteLine("\nLa bouteille contient désormais " + resultat + "L\n");
+                                Console.WriteLine("Vous essayez de vider plus que possible, remise a {0}\n", resultat);
                             }           
                             else
-                            {
+                            {                   
                                 resultat = bottle.Empty(resultat);
-                                Console.WriteLine("Vous essayez de vider plus que possible, remise a {0}", resultat);
+                                Console.WriteLine("\nLa bouteille contient désormais " + resultat + "L\n");
                             }
                             
                         }
