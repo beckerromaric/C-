@@ -25,7 +25,7 @@ namespace CoursMickaelPerso
 
         static void Main(string[] args)
         {
-
+            double substract;
             double number;
             Bottle bottle;
             ConsoleKey inputKey;
@@ -62,66 +62,88 @@ namespace CoursMickaelPerso
                     case ConsoleKey.F:
                         ouvertFerme = bottle.Close() ? "ouverte" : "fermée";
                         Console.WriteLine("\n\nLa bouteille est " + ouvertFerme + "\n");
-                        break;
+                    break;
 
                     case ConsoleKey.R:
-                        if(ouvertFerme == "ouverte")
+                        if (ouvertFerme == "ouverte")
                         {
-                            bottle.Fill();
-                            Console.WriteLine("\nLa bouteille est remplie! Elle contient {0}L\n", bottle.Fill());
+                            if(bottle.GetCurrentVolume() != bottle.GetCapacity())
+                            {
+                                bottle.Fill();
+                                Console.WriteLine("\nLa bouteille est remplie! Elle contient {0}L\n", bottle.Fill());
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nVous ne pouvez pas remplir la bouteille car elle contient déjà le maximum possible !\n");
+                            }             
                         }
                         else
                         {
-                            
                             Console.WriteLine("\nVous ne pouvez pas remplir la bouteille car elle est fermée !!\n");
                         }
-                        break;
+                    break;
 
                     case ConsoleKey.V:
-                        if(ouvertFerme == "fermée")
+                        if(ouvertFerme == "ouverte")
+                        {
+                            if(bottle.GetCurrentVolume() != 0)
+                            {
+                                bottle.Empty();
+                                Console.WriteLine("\nLa bouteille est vide! Elle contient maintenant {0}\n", bottle.Empty());
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nVous ne pouvez pas vider la bouteille car son volume courant est déjà à zéro !!!");
+                            }                          
+                        }
+                        else
                         {
                             Console.WriteLine("\nLa bouteille est fermée vous ne pouvez pas la vider !\n");
                         }
-                        else
-                        {
-                            bottle.Empty();
-                            Console.WriteLine("\nLa bouteille est vide! Elle contient maintenant {0}\n", bottle.Empty());
-                        }
-                        break;
+                    break;
 
                     case ConsoleKey.OemPlus:
                         if (ouvertFerme == "ouverte")
                         {
-                            resultat = SaisieDouble("\nDe combien de cl voulez-vous remplir la bouteille ?\n");
-                            resultat = bottle.Fill(resultat);
-                            if (resultat < bottle.GetCapacity())
+                            if(bottle.GetCurrentVolume() < bottle.GetCapacity())
                             {
-                                
-                                Console.WriteLine("\nLa bouteille contient désormais " + resultat + "L");
+                                resultat = SaisieDouble("\nDe combien de L voulez-vous remplir la bouteille ?\n");
+
+                                if((resultat += bottle.GetCurrentVolume()) <= bottle.GetCapacity())
+                                {
+                                    resultat = bottle.Fill(resultat);
+                                    Console.WriteLine("\nLa bouteille contient désormais " + resultat + "L");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nVous ne pouvez pas remplir la bouteille car vous dépassez la capacité !!\n");
+                                }                                                         
                             }
                             else
                             {
-                                Console.WriteLine("\nVous ne pouvez pas remplir la bouteille car vous dépassez la capacité !!\n");    
-                            }                           
+                                Console.WriteLine("\nLa bouteille est déjà remplie\n");
+                            }
                         }
                         else
                         {
                             Console.WriteLine("\nVous ne pouvez pas remplir la bouteille car elle est fermée !!\n");
                         }
-                        break;
+                    break;
 
                     case ConsoleKey.Subtract:
                         if (ouvertFerme == "ouverte")
                         {
                             resultat = SaisieDouble("\nDe combien de L voulez vous vider la bouteille ?\n");
-                            resultat = bottle.Empty(resultat);
-
-                            if(resultat > bottle.GetCapacity())
+                            substract = bottle.GetCurrentVolume() - resultat;
+                            if(substract >= 0)
                             {
+
+                                resultat = bottle.Empty(resultat);
                                 Console.WriteLine("\nLa bouteille contient désormais " + resultat + "L\n");
-                            }
+                            }           
                             else
                             {
+                                resultat = bottle.Empty(resultat);
                                 Console.WriteLine("Vous essayez de vider plus que possible, remise a {0}", resultat);
                             }
                             
@@ -129,18 +151,10 @@ namespace CoursMickaelPerso
                         else
                         {
                             Console.WriteLine("\nVous ne pouvez pas vider la bouteille car elle est fermée !!\n");
-                        }
-                        
-                        
-                        break;
-
-                        
-
-                    case ConsoleKey.Q:
-
-                        break;
+                        }      
+                    break;                     
                 }
-            }
+             }
             while (ConsoleKey.Q != inputKey);
 
             Console.WriteLine("\nBye !");

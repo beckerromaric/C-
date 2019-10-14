@@ -97,7 +97,7 @@ namespace CoursMickaelBouteille
             Console.WriteLine("Etat bouteille" + bouteille.Close());
 
             Console.WriteLine("Remplissage bouteille son volume est : ");
-            Console.WriteLine(bouteille.fill(0.5d));
+            Console.WriteLine(bouteille.Fill(0.5d));
 
             Console.WriteLine("Vidage bouteille son volume est : ");
             Console.WriteLine(bouteille.Empty(-5));
