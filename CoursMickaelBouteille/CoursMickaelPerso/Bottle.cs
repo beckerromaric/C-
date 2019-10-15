@@ -10,8 +10,6 @@ namespace CoursMickaelPerso
     {
         private bool isOpen;
 
-        public bool isEmpty;
-
         //readonly pour le modifier uniquement dans le constructeur
         private readonly double capacity;
 

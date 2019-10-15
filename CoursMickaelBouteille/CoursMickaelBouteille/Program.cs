@@ -42,10 +42,10 @@ namespace CoursMickaelBouteille
                 Console.WriteLine("Quelle opération souhaitez vous effectuer ? ");
                 Console.WriteLine("1: Ouvrir (O)");
                 Console.WriteLine("2: Fermer (F)");
-                Console.WriteLine("3: Remplir la bouteille (R)");
-                Console.WriteLine("4: Vider la bouteille (V)");
-                Console.WriteLine("5: Remplir totalement la bouteille (+)");
-                Console.WriteLine("6: Vider totalement la bouteille (-)");
+                Console.WriteLine("3: Remplir totalement la bouteille (R)");
+                Console.WriteLine("4: Vider totalement la bouteille (V)");
+                Console.WriteLine("5: Remplir partiellement la bouteille (+)");
+                Console.WriteLine("6: Vider partiellement la bouteille (-)");
                 Console.WriteLine("7: Quitter le programme (Q)");
 
                 inputKey = Console.ReadKey().Key;
