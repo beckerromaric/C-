@@ -33,7 +33,7 @@ namespace CoursMickaelException
         {       //Pas la peine de préciser true ou false vu que c'est déjà un boolean
             if (isOpen)
             {
-                throw new Exception("\nLa bouteille est déjà ouverte.\n");
+                throw new Exception("\nLa bouteille est déjà ouverte. \n");
             }
             isOpen = true;
             return isOpen;
@@ -43,7 +43,7 @@ namespace CoursMickaelException
         {
             if (!isOpen)
             {
-                throw new Exception("\nLa bouteille est déjà fermée.\n");
+                throw new Exception("\nLa bouteille est déjà fermée. \n");
             }
             isOpen = false;
             return isOpen;
