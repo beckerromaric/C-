@@ -17,11 +17,13 @@ namespace CoursMickaelException
         {
             if(_capacity < 0)
             {
+                //throw new Exception("Impossible de créer une bouteille à capcité négative !");
                 throw new ArgumentOutOfRangeException("Impossible de créer une bouteille à capacité négative");
             }
 
             if (_capacity > 10)
             {
+                //throw new Exception("Ce n'est pas une citerne que tu crée !");
                 throw new ArgumentOutOfRangeException("Ce n'est pas une citerne que tu crée !");
             }
             this.capacity = _capacity;
@@ -52,7 +54,7 @@ namespace CoursMickaelException
         public double Fill()
         {
             if (!isOpen)
-            {
+            {   // La première est une exception personnalisée contrairement a la 2ème qui est plus spécialisée
                 //throw new Exception("\nLa bouteille est fermée, vous ne pouvez pas la remplir !\n");
                 throw new InvalidOperationException("\nBouteille fermée, vous ne pouvez pas remplir la bouteille !\n");
             }
@@ -60,7 +62,7 @@ namespace CoursMickaelException
             if (this.currentVolume == this.capacity)
             {
                 //throw new Exception("\nVous ne pouvez pas remplir la bouteille car elle est déjà pleine !\n");
-                throw new InvalidOperationException("Vous ne pouvez pas remplir la bouteille car elle est déjà pleine !");
+                throw new InvalidOperationException("\nVous ne pouvez pas remplir la bouteille car elle est déjà pleine !\n");
             }
 
             
@@ -86,10 +88,16 @@ namespace CoursMickaelException
             }
 
             if ((_quantity + this.currentVolume) > this.capacity)
+
             {
                 //throw new Exception("\nVous essayez de remplir plus que possible !\n");
                 throw new InvalidOperationException("\nVous essayez de remplir plus que possible! " +
                                                     "Vous ne pouvez pas rajouter plus que "+ (capacity - currentVolume) +"\n" );
+            }
+
+            if(_quantity < 0)
+            {
+                throw new InvalidOperationException("\nVous essayez de vider avec une valeur négative!\n");
             }
 
             currentVolume += _quantity;
@@ -138,7 +146,7 @@ namespace CoursMickaelException
 
             if ((this.currentVolume - _quantity) < this.capacity)
             {                       //Il faut rajouter string.Format pour utiliser les marqueurs {0} , variable
-                throw new Exception(string.Format("\nVous essayez de vider plus que possible! Remise à {0}.\n", currentVolume));
+                throw new Exception(string.Format("\nVous essayez de vider plus que possible! La bouteille contient {0}.\n", currentVolume));
             }
  
             if (_quantity < currentVolume)
