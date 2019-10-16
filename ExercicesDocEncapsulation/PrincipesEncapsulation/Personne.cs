@@ -37,7 +37,14 @@ namespace PrincipesEncapsulation
 
         private void ValiderSociete(string _societe)
         {
-            if (_societe.Length <= 30 && _societe != )
+            if (_societe.Length <= 30 && _societe != PAS_DE_SOCIETE)
+            {
+                this.societe = PAS_DE_SOCIETE;
+            }
+            else
+            {
+                Console.WriteLine("Vous essayez de quitter une societe sans en faire parti!!");
+            }
         }
 
         public void QuitterSociete()
