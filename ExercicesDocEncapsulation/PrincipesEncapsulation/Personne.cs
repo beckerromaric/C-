@@ -20,7 +20,7 @@ namespace PrincipesEncapsulation
         public Personne(string _nom, string _societe)
         {
             this.nom = _nom.ToUpper();
-            this.societe = _societe;
+            this.societe = ValiderSociete(_societe);
         }
 
         public void Afficher()
@@ -35,7 +35,7 @@ namespace PrincipesEncapsulation
             }
         }
 
-        private void ValiderSociete(string _societe)
+        private string ValiderSociete(string _societe)
         {
             if (_societe.Length <= 30 && _societe != PAS_DE_SOCIETE)
             {
@@ -45,6 +45,7 @@ namespace PrincipesEncapsulation
             {
                 Console.WriteLine("Vous essayez de quitter une societe sans en faire parti!!");
             }
+            return null;
         }
 
         public void QuitterSociete()

@@ -21,10 +21,10 @@ namespace CoursMickaelException
 
         static void Main(string[] args)
         {
-            double number;
+            double number = 0;
             Bottle bottle = null;
             //Bottle bottle1;
-            ConsoleKey inputKey;
+            ConsoleKey inputKey = ConsoleKey.Escape;
             string ouvertFerme = "fermée";
             //débugger F11 pour étape suivante
             Console.WriteLine("Programme bouteille");
@@ -68,20 +68,20 @@ namespace CoursMickaelException
 
             do
             {
-
-                Console.WriteLine("Quelle opération souhaitez vous effectuer ? ");
-                Console.WriteLine("1: Ouvrir (O)");
-                Console.WriteLine("2: Fermer (F)");
-                Console.WriteLine("3: Remplir totalement la bouteille (R)");
-                Console.WriteLine("4: Vider totalement la bouteille (V)");
-                Console.WriteLine("5: Remplir partiellement la bouteille (+)");
-                Console.WriteLine("6: Vider partiellement la bouteille (-)");
-                Console.WriteLine("7: Quitter le programme (Q)");
-
-                inputKey = Console.ReadKey().Key;
-
                 try
                 {
+                    Console.WriteLine("Quelle opération souhaitez vous effectuer ? ");
+                    Console.WriteLine("1: Ouvrir (O)");
+                    Console.WriteLine("2: Fermer (F)");
+                    Console.WriteLine("3: Remplir totalement la bouteille (R)");
+                    Console.WriteLine("4: Vider totalement la bouteille (V)");
+                    Console.WriteLine("5: Remplir partiellement la bouteille (+)");
+                    Console.WriteLine("6: Vider partiellement la bouteille (-)");
+                    Console.WriteLine("7: Quitter le programme (Q)");
+
+                    inputKey = Console.ReadKey().Key;
+
+
                     switch (inputKey)
                     {
                         case ConsoleKey.O:
@@ -123,8 +123,8 @@ namespace CoursMickaelException
                             Console.WriteLine("\nLa bouteille contient maintenant " + bottle.GetCurrentVolume() + "L\n");
                             break;
 
-                        case ConsoleKey.Q:
-
+                        default:
+                            Console.WriteLine("\nSaisie incorrecte, veuillez recommencer.\n");
                             break;
                     }
                 }

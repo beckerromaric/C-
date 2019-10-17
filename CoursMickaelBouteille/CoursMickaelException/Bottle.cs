@@ -13,6 +13,10 @@ namespace CoursMickaelException
 
         private double currentVolume;
 
+        public EventHandler OnStateChange;
+
+        public bool IsOpen { get => isOpen; set => isOpen = value; }
+
         public Bottle(double _capacity)
         {
             if(_capacity < 0)
@@ -27,33 +31,33 @@ namespace CoursMickaelException
                 throw new ArgumentOutOfRangeException("Ce n'est pas une citerne que tu crée !");
             }
             this.capacity = _capacity;
-            this.isOpen = false;
+            this.IsOpen = false;
             this.currentVolume = 0;
         }
 
         public bool Open()
         {       //Pas la peine de préciser true ou false vu que c'est déjà un boolean
-            if (isOpen)
+            if (IsOpen)
             {
                 throw new Exception("\nLa bouteille est déjà ouverte. \n");
             }
-            isOpen = true;
-            return isOpen;
+            IsOpen = true;
+            return IsOpen;
         }
 
         public bool Close()
         {
-            if (!isOpen)
+            if (!IsOpen)
             {
                 throw new Exception("\nLa bouteille est déjà fermée. \n");
             }
-            isOpen = false;
-            return isOpen;
+            IsOpen = false;
+            return IsOpen;
         }
 
         public double Fill()
         {
-            if (!isOpen)
+            if (!IsOpen)
             {   // La première est une exception personnalisée contrairement a la 2ème qui est plus spécialisée
                 //throw new Exception("\nLa bouteille est fermée, vous ne pouvez pas la remplir !\n");
                 throw new InvalidOperationException("\nBouteille fermée, vous ne pouvez pas remplir la bouteille !\n");
@@ -75,7 +79,7 @@ namespace CoursMickaelException
 
         public double Fill(double _quantity)
         {
-            if (!isOpen)
+            if (!IsOpen)
             {
                 //throw new Exception("\nLa bouteille est fermée, vous ne pouvez pas la remplir !\n");
                 throw new InvalidOperationException("\nLa bouteille est fermée, vous ne pouvez pas la remplir !\n");
@@ -108,7 +112,7 @@ namespace CoursMickaelException
 
         public double Empty()
         {
-            if (!isOpen)
+            if (!IsOpen)
             {
                 //throw new Exception("\nLa bouteille est fermée, vous ne pouvez pas la vider !\n");
                 throw new InvalidOperationException("\nLa bouteille est fermée, vous ne pouvez pas la vider !\n");
@@ -128,7 +132,7 @@ namespace CoursMickaelException
 
         public double Empty(double _quantity)
         {
-            if (!isOpen)
+            if (!IsOpen)
             {
                 //throw new Exception("\nLa bouteille est fermée, vous ne pouvez pas la vider !\n");
                 throw new InvalidOperationException("\nLa bouteille est fermée, vous ne pouvez pas la vider !\n");

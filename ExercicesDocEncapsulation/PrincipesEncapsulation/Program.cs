@@ -8,11 +8,11 @@ namespace PrincipesEncapsulation
         {
             Console.WriteLine("Passage dans le main");
 
-            Personne martin = new Personne("martin", "Java SARL");
-            Personne dupont = new Personne("dupont");
+            //Personne martin = new Personne("martin", "Java SARL");
+            //Personne dupont = new Personne("dupont");
 
-            martin.Afficher();
-            dupont.Afficher();
+            //martin.Afficher();
+            //dupont.Afficher();
 
             Personne durand = new Personne("durand", "J2E SA");
             durand.Afficher();
@@ -20,6 +20,12 @@ namespace PrincipesEncapsulation
             durand.Afficher();
             durand.SetSociete("EJB Corporate");
             durand.Afficher();
+            durand.SetSociete("EJB Corporate");
+            durand.Afficher();
+
+            //Personne martin = new Personne("martin", "?");
+            //martin.Afficher();
+
         }
     }
 }
