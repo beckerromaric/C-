@@ -18,6 +18,33 @@ namespace CoursMickaelException
 
             return number;
         }
+                                        //quand on voit object sender c'est une methode qui attend un évenement
+                                        //sender est une convention mais on pourrait la nommer comme on le veut
+        static void BottleStateChanged(object sender, EventArgs e)
+        {
+            //ceci est un cast
+            //Bottle bottle = (Bottle)sender;
+                        //sender as (en tant) que bouteille cette façon 
+                        //d'écrire ne plante pas si on se trompe d'objet
+            //Bottle bottle2 = sender as Bottle;
+            
+            //if (bottle2 != null)
+            //{
+            //    Console.WriteLine("EVENEMENT DECLENCHE");
+            //}
+
+            //meilleur moyen de vérifier qu'une variable est du bon type equivalent à 
+            //Bottle bottle2 = sender as Bottle;
+            if (sender is Bottle bottle)
+            {
+
+                string ouvertFerme = bottle.IsOpen ? "ouverte" : "fermée";
+
+                Console.WriteLine("\nLa bouteille est " + ouvertFerme + "\n");
+                Console.WriteLine("\nLa bouteille contient" + bottle.GetCurrentVolume() + "L pour une capacité de " + bottle.GetCapacity() + "L\n");
+            }
+            
+        }
 
         static void Main(string[] args)
         {
@@ -25,7 +52,7 @@ namespace CoursMickaelException
             Bottle bottle = null;
             //Bottle bottle1;
             ConsoleKey inputKey = ConsoleKey.Escape;
-            string ouvertFerme = "fermée";
+            
             //débugger F11 pour étape suivante
             Console.WriteLine("Programme bouteille");
 
@@ -58,6 +85,8 @@ namespace CoursMickaelException
                 {
                     number = SaisieDouble("\nQuelle capacité souhaitez-vous ?");
                     bottle = new Bottle(number);
+                    //Pour demander que la methode bottleStateChanged s'abonne à OnStateChange
+                    bottle.OnStateChange += BottleStateChanged;
                 }
                 catch (Exception e)
                 {
@@ -86,13 +115,15 @@ namespace CoursMickaelException
                     {
                         case ConsoleKey.O:
 
-                            ouvertFerme = bottle.Open() ? "ouverte" : "fermée";
-                            Console.WriteLine("\n\nLa bouteille est " + ouvertFerme + "\n");
+                            //ouvertFerme = bottle.Open() ? "ouverte" : "fermée";
+                            //Console.WriteLine("\n\nLa bouteille est " + ouvertFerme + "\n");
+                            bottle.Open();
                             break;
 
                         case ConsoleKey.F:
-                            ouvertFerme = bottle.Close() ? "ouverte" : "fermée";
-                            Console.WriteLine("\n\nLa bouteille est " + ouvertFerme + "\n");
+                            //ouvertFerme = bottle.Close() ? "ouverte" : "fermée";
+                            //Console.WriteLine("\n\nLa bouteille est " + ouvertFerme + "\n");
+                            bottle.Close();
                             break;
 
                         case ConsoleKey.R:

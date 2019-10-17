@@ -15,7 +15,26 @@ namespace CoursMickaelException
 
         public EventHandler OnStateChange;
 
-        public bool IsOpen { get => isOpen; set => isOpen = value; }
+        public bool IsOpen
+        {
+            get
+            {
+                return isOpen;
+            }
+
+            set
+            {
+                isOpen = value;
+                //if(OnStateChange != null)
+                //{
+                //                       //this correspond a l'instance actuelle(Bottle)
+                //    OnStateChange.Invoke(this, new EventArgs());
+                //}
+
+                //est identique à OnStateChanged != null
+                OnStateChange?.Invoke(this, new EventArgs());
+            }
+        }
 
         public Bottle(double _capacity)
         {
@@ -72,7 +91,7 @@ namespace CoursMickaelException
             
 
             this.currentVolume = this.capacity;
-
+            
 
             return this.currentVolume;
         }

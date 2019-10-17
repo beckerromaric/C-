@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursMickaelBouteille", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursMickaelPerso", "CoursMickaelPerso\CoursMickaelPerso.csproj", "{B0648121-977C-4712-8EFE-BBFA9E173667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoursMickaelException", "CoursMickaelException\CoursMickaelException.csproj", "{785ECFBF-FA64-48D3-A6E1-3CDDCFBBED6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoursMickaelExceptionEvenement", "CoursMickaelException\CoursMickaelExceptionEvenement.csproj", "{785ECFBF-FA64-48D3-A6E1-3CDDCFBBED6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
