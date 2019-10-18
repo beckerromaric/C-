@@ -25,6 +25,7 @@ namespace PersonneAdresse
             jean.Adresse = new Adresse(44, " rue des Docks, ", 33000, "Bordeaux");
             Console.WriteLine(jean.ToString());
 
+            //pour acceder au setter
             nathalie.Adresse = paris;
             Console.WriteLine(nathalie.ToString());
         }
