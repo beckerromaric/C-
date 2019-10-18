@@ -13,6 +13,20 @@ namespace PersonneAdresse
             Console.WriteLine(paris.ToString());
             Console.WriteLine(nantes.ToString());
             Console.WriteLine(lille.ToString());
+
+            Personne jean = new Personne("Jean", "Dupont", 30, lille);
+            Personne bernard = new Personne("Bernard", "Morin", 45, paris);
+            Personne nathalie = new Personne("Nathalie", "Durand", 35, nantes);
+
+            Console.WriteLine(jean.ToString());
+            Console.WriteLine(bernard.ToString());
+            Console.WriteLine(nathalie.ToString());
+
+            jean.Adresse = new Adresse(44, " rue des Docks, ", 33000, "Bordeaux");
+            Console.WriteLine(jean.ToString());
+
+            nathalie.Adresse = paris;
+            Console.WriteLine(nathalie.ToString());
         }
     }
 }

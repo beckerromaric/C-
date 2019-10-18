@@ -61,7 +61,7 @@ namespace PersonneAdresse
 
         public override string ToString()
         {
-            return "Adresse: " + GetNumeroRue() + " " + GetNomRue() + ", " + GetCodePostal() + " " + GetVille() ;
+            return GetNumeroRue() + " " + GetNomRue() + ", " + GetCodePostal() + " " + GetVille() ;
         }
     }
 }
