@@ -43,7 +43,7 @@ namespace CoursMickaelException
                 Console.WriteLine("\nLa bouteille est " + ouvertFerme + "\n");
                 Console.WriteLine("\nLa bouteille contient" + bottle.GetCurrentVolume() + "L pour une capacité de " + bottle.GetCapacity() + "L\n");
             }
-            
+
         }
 
         static void Main(string[] args)
