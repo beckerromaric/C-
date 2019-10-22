@@ -20,7 +20,6 @@ namespace TpJeuOCR
         {
             int lancerMob = LancerDe();
             int lancerJoueur = _joueur.LancerDe();
-
             if(lancerJoueur < lancerMob)
             {
                 _joueur.SubitDegats(degats);

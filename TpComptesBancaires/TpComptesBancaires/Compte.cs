@@ -38,7 +38,7 @@ namespace TpComptesBancaires
 
         public bool Debiter(double _montant)
         {
-            if((Solde - _montant) > DecouvertAutorise)
+            if((Solde - _montant) >= DecouvertAutorise)
             {
                 Solde -= _montant;
                 return true;
@@ -49,7 +49,7 @@ namespace TpComptesBancaires
 
         public bool Transferer(double _montant, Compte _autreCompte)
         {
-            if((Solde - _montant) > DecouvertAutorise)
+            if((Solde - _montant) >= DecouvertAutorise)
             {
                 Solde = Solde - _montant;
                 _autreCompte.Solde += _montant;
@@ -112,7 +112,7 @@ namespace TpComptesBancaires
 
         public string Afficher()
         {
-            return "Numéro compte : " + Numero + " Nom client: " + NomClient + " Solde: " + Solde + " Découvert Autorisé" + DecouvertAutorise;
+            return "\nNuméro compte : " + Numero + " Nom client: " + NomClient + " Solde: " + Solde + " Découvert Autorisé" + DecouvertAutorise + "\n";
         }
     }
 }
