@@ -6,19 +6,19 @@ namespace TpJeuOCR
 {
     class De
     {
-        private static Random random;
+        private Random random;
 
         public De()
         {
             random = new Random();
         }
 
-        public static int LanceLeDe()
+        public int LanceLeDe()
         {
             return random.Next(1, 7);
         }
 
-        public static int LanceLeDe(int _valeurDe)
+        public int LanceLeDe(int _valeurDe)
         {
             return random.Next(1, _valeurDe);
         }
