@@ -89,19 +89,15 @@ namespace TpComptesBancaires
             return null;
         }
         
-        public bool Transferer(Compte _compteProprietaire, Compte _compteReceveur, double _montant)
+        public void Transferer(Compte _compteProprietaire, Compte _compteReceveur, double _montant)
         {
             //if((_compteProprietaire.Solde - _montant) >= _compteProprietaire.DecouvertAutorise)
             //{
             //_compteProprietaire.Solde -= _montant;
             //_compteReceveur.Solde += _montant;
-            _compteReceveur.Debiter(_montant);
-            _compteProprietaire.Crediter(_montant);
+            _compteReceveur.Crediter(_montant);
+            _compteProprietaire.Debiter(_montant);
                 
-                return true;
-            //}
-
-            return false;
         }
     }
 }

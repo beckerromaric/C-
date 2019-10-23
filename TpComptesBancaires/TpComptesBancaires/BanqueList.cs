@@ -70,5 +70,36 @@ namespace TpComptesBancaires
             lesComptes.Add(new Compte(_numeroCpt, _nom, _solde, _decouvert));
         }
 
+        public Compte CompteSuperieur(int _numeroCompte)
+        {
+            Compte min = lesComptes[0];
+
+            for (int i = 0; i < nbComptes; i++)
+            {
+                if(lesComptes[i].Numero == _numeroCompte)
+                {
+                    return lesComptes[i];
+                }
+            }
+            return null;
+        }
+
+        public Compte CheckCompte(int _numeroCompte)
+        {
+            for (int i = 0; i < nbComptes; i++)
+            {
+                if(lesComptes[i].Numero == _numeroCompte)
+                {
+                    return lesComptes[i];
+                }
+            }
+            return null;
+        }
+
+        public bool Transferer(Compte _compteProprietaire, Compte _compteDestinataire, double _montant)
+        {
+            _compteDestinataire.Crediter(_montant);
+            _compteProprietaire.Debiter(_montant);
+        }
     }
 }
