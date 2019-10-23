@@ -53,36 +53,55 @@ namespace TpComptesBancaires
 
         public void AjouterCompte(int _numeroCpt, string _nom, double _solde, double _decouvert)
         {
+            if (_numeroCpt < 0)
+            {
+                throw new ArgumentOutOfRangeException("Vous essayez de créer un compte avec un numéro négatif !");
+            }
+
+
             lesComptes[nbComptes++] = new Compte(_numeroCpt, _nom, _solde, _decouvert);
         }
 
-        public string CompteSuperieur()
+        public Compte CompteSuperieur()
         {
-            string resultat = "";
+            Compte min = lesComptes[0];
             
-            for (int i = 0; i < lesComptes.Length; i++)
+            for (int i = 1; i < nbComptes; i++)
             {
-                if (lesComptes[i].Superieur(lesComptes[i+1]))
+                if (lesComptes[i].Superieur(min))
                 {
-                    resultat = lesComptes[i].Afficher();
-                    
+                    min = lesComptes[i];                   
                 }
             }
 
-            return resultat;
+            return min;
         }
 
         public Compte CheckCompte(int _numeroCompte)
-        {
-            for (int i = 0; i < lesComptes.Length; i++)
+        { 
+            for (int i = 0; i < nbComptes; i++)
             {
                 if (lesComptes[i].Numero == _numeroCompte)
                 {
-                    return lesComptes[_numeroCompte];
+                    return lesComptes[i];
                 }
             }
-
             return null;
+        }
+        
+        public bool Transferer(Compte _compteProprietaire, Compte _compteReceveur, double _montant)
+        {
+            //if((_compteProprietaire.Solde - _montant) >= _compteProprietaire.DecouvertAutorise)
+            //{
+            //_compteProprietaire.Solde -= _montant;
+            //_compteReceveur.Solde += _montant;
+            _compteReceveur.Debiter(_montant);
+            _compteProprietaire.Crediter(_montant);
+                
+                return true;
+            //}
+
+            return false;
         }
     }
 }

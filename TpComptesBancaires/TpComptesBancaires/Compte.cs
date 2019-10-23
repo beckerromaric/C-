@@ -33,11 +33,26 @@ namespace TpComptesBancaires
 
         public void Crediter(double _montant)
         {
+            if (_montant < 0)
+            {
+                throw new ArgumentOutOfRangeException("Vous essayez de créditer une somme négative !");
+            }
+            
             Solde = Solde + _montant;
         }
 
         public bool Debiter(double _montant)
         {
+            if (_montant < 0)
+            {
+                throw new ArgumentOutOfRangeException("Vous essayez de débiter une somme négative!");
+            }
+
+            if ((Solde - _montant) < DecouvertAutorise)
+            {
+                throw new ArgumentOutOfRangeException("Vous dépassez le découvert autorisé !!");
+            }
+
             if((Solde - _montant) >= DecouvertAutorise)
             {
                 Solde -= _montant;
@@ -49,10 +64,20 @@ namespace TpComptesBancaires
 
         public bool Transferer(double _montant, Compte _autreCompte)
         {
-            if((Solde - _montant) >= DecouvertAutorise)
+            if(_montant < 0)
+            {
+                throw new ArgumentOutOfRangeException("Vous essayez de transferer une somme négative!");
+            }
+            
+            if ((Solde - _montant) < DecouvertAutorise)
+            {
+                throw new ArgumentOutOfRangeException("Vous essayez de transferer une somme au dela du découvert autorisé !");
+            }
+
+            if ((Solde - _montant) >= DecouvertAutorise)
             {
                 Solde = Solde - _montant;
-                _autreCompte.Solde += _montant;
+                _autreCompte.Debiter(_montant);
                 return true;
             }
 

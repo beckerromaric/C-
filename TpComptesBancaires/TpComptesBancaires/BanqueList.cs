@@ -1,0 +1,74 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TpComptesBancaires
+{
+    class BanqueList
+    {
+        private int nbComptes;
+
+        private List<Compte> lesComptes;  
+
+        public BanqueList()
+        {
+            lesComptes = new List<Compte>();
+            this.nbComptes = 0;
+        }
+
+        public void Init()
+        {
+            Compte compte6 = new Compte(12345, "Jojo", 1000, -500);
+            Compte compte7 = new Compte(45785, "Jaja", 2000, -1000);
+            Compte compte8 = new Compte(21574, "Jiji", 2000, -1500);
+            Compte compte9 = new Compte(45745, "Juju", 1200, -500);
+            Compte compte10 = new Compte(48715, "Jyjy", -200, -500);
+
+            lesComptes.Add(compte6);
+            lesComptes.Add(compte7);
+            lesComptes.Add(compte8);
+            lesComptes.Add(compte9);
+            lesComptes.Add(compte10);
+            //autre methode pour instancier "à la volée" mais il n'y a plus qu'un adressage (l'indice)
+            //à la place de 2 quand on utilise la methode ci-dessus.
+            //lesComptes.Add(new Compte(12345, "Jojo", 1000, -500));
+            //lesComptes.Add(new Compte(45785, "Jaja", 2000, -1000));
+        }
+
+        //Inutile avec les List car maList.Add() fait la même chose
+        //private void AjouteCompte(Compte _unCompte)
+        //{
+        //    lesComptes.Add(_unCompte); 
+        //}
+
+        public string AfficherCompte()
+        {
+            string str = "";
+
+            foreach (var affichage in lesComptes)
+            {
+                str += affichage.Afficher();
+            }
+
+            return str;
+
+            //for (var i = 0; i < lesComptes.Count; i++)
+            //{
+            //    str += lesComptes[i].Afficher();
+            //}
+
+            //return str;
+        }
+
+        public void AjouterComptes(int _numeroCpt, string _nom, double _solde, double _decouvert)
+        {
+            if(_numeroCpt < 0)
+            {
+                throw new ArgumentOutOfRangeException("Vous esssayez de rentrer un numéro de compte négatif !");
+            }
+
+            lesComptes.Add(new Compte(_numeroCpt, _nom, _solde, _decouvert));
+        }
+
+    }
+}
