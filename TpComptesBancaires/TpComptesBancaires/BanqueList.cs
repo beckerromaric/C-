@@ -74,19 +74,25 @@ namespace TpComptesBancaires
         {
             Compte min = lesComptes[0];
 
-            for (int i = 0; i < nbComptes; i++)
+            for (int i = 1; i < nbComptes; i++)
             {
-                if(lesComptes[i].Numero == _numeroCompte)
+                if (lesComptes[i].Superieur(min))
                 {
-                    return lesComptes[i];
+                    min = lesComptes[i];
                 }
             }
-            return null;
+
+            return min;
         }
 
         public Compte CheckCompte(int _numeroCompte)
         {
-            for (int i = 0; i < nbComptes; i++)
+            if (_numeroCompte < 0)
+            {
+                throw new ArgumentOutOfRangeException("Vous essayez de trouver un compte avec un numéro négatif !");
+            }
+
+            for (int i = 0; i < lesComptes.Count; i++)
             {
                 if(lesComptes[i].Numero == _numeroCompte)
                 {
@@ -96,10 +102,16 @@ namespace TpComptesBancaires
             return null;
         }
 
-        public bool Transferer(Compte _compteProprietaire, Compte _compteDestinataire, double _montant)
+        public void Transferer(Compte _compteProprietaire, Compte _compteDestinataire, double _montant)
         {
-            _compteDestinataire.Crediter(_montant);
-            _compteProprietaire.Debiter(_montant);
+            if (_montant < 0)
+            {
+                throw new ArgumentOutOfRangeException("Vous essayez de transferer un solde négatif, demande plutôt au destinataire " +
+                                                        "de t'envoyer de l'argent !!");
+            }
+                _compteDestinataire.Crediter(_montant);
+                _compteProprietaire.Debiter(_montant);
+
         }
     }
 }

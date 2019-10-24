@@ -94,7 +94,7 @@ namespace TpComptesBancaires
 
             //if (c != null)
             //{
-            //    Console.WriteLine(c.Afficher()); 
+            //    Console.WriteLine(c.Afficher());
             //}
             //else
             //{
@@ -102,6 +102,9 @@ namespace TpComptesBancaires
             //}
 
             //-------------------------------------------------------------------------------------------------------------
+            //Banque banque1 = new Banque();
+            //banque1.Init();
+
             //Compte compte1 = new Compte(12345, "Romaric", 1000, -500);
             //Compte compte2 = new Compte(45678, "Roro", 2000, -1000);
 
@@ -121,19 +124,62 @@ namespace TpComptesBancaires
             //        Console.WriteLine("Transfert impossible");
             //    }
             //}
-            //catch(Exception e)
+            //catch (Exception e)
             //{
             //    Console.WriteLine(e);
             //}
+            //--------------------------------------------------------------------
+            //BanqueList banque2 = new BanqueList();
+            //banque2.Init();
 
+            //Console.WriteLine(banque2.AfficherCompte());
+
+            //banque2.AjouterComptes(12546, "Koko", 4500, -500);
+
+            //Console.WriteLine(banque2.AfficherCompte());
+            //------------------------------------------------------
+
+            //BanqueList banque2 = new BanqueList();
+            //banque2.Init();
+
+            //Compte compte1 = new Compte(12345, "Romaric", 1000, -500);
+            //Compte compte2 = new Compte(45678, "Roro", 2000, -1000);
+
+            //Console.WriteLine(compte1.Afficher());
+            //Console.WriteLine(compte2.Afficher());
+            //try
+            //{
+                
+            //    if (banque2.Transferer(compte1, compte2, -10))
+            //    {
+            //        Console.WriteLine("Transfert effectué");
+            //        Console.WriteLine(compte1.Afficher());
+            //        Console.WriteLine(compte2.Afficher());
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Transfert impossible");
+            //    }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //}
+            //---------------------------------------------------------
             BanqueList banque2 = new BanqueList();
             banque2.Init();
 
-            Console.WriteLine(banque2.AfficherCompte());
+            Compte c = banque2.CheckCompte(12345);
 
-            banque2.AjouterComptes(12546, "Koko", 4500, -500);
 
-            Console.WriteLine(banque2.AfficherCompte());
+            if (c != null)
+            {
+                Console.WriteLine(c.Afficher());
+            }
+            else
+            {
+                Console.WriteLine("Compte inexistant");
+            }
         }
     }
 }

@@ -137,7 +137,8 @@ namespace TpComptesBancaires
 
         public string Afficher()
         {
-            return "\nNuméro compte : " + Numero + " Nom client: " + NomClient + " Solde: " + Solde + " Découvert Autorisé" + DecouvertAutorise + "\n";
+            //return "\nNuméro compte : " + Numero + " Nom client: " + NomClient + " Solde: " + Solde + " Découvert Autorisé" + DecouvertAutorise + "\n";
+            return ($"Numéro compte : {this.Numero.ToString("0000-0000-0000-0000")} \nNom : {this.nomClient.ToString()} \nSolde : {this.solde.ToString()} Euros \nDécouvert autorisé: {this.decouvertAutorise.ToString()} Euros");
         }
     }
 }
