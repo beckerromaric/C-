@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace TpComptesBancaires
+namespace Banquier
 {
     public class Compte
     {
@@ -37,7 +35,7 @@ namespace TpComptesBancaires
             {
                 throw new ArgumentOutOfRangeException("Vous essayez de créditer une somme négative !");
             }
-            
+
             Solde = Solde + _montant;
         }
 
@@ -53,7 +51,7 @@ namespace TpComptesBancaires
                 throw new ArgumentOutOfRangeException("Vous dépassez le découvert autorisé !!");
             }
 
-            if((Solde - _montant) >= DecouvertAutorise)
+            if ((Solde - _montant) >= DecouvertAutorise)
             {
                 Solde -= _montant;
                 return true;
@@ -64,11 +62,11 @@ namespace TpComptesBancaires
 
         public bool Transferer(double _montant, Compte _autreCompte)
         {
-            if(_montant < 0)
+            if (_montant < 0)
             {
                 throw new ArgumentOutOfRangeException("Vous essayez de transferer une somme négative!");
             }
-            
+
             if ((Solde - _montant) < DecouvertAutorise)
             {
                 throw new ArgumentOutOfRangeException("Vous essayez de transferer une somme au dela du découvert autorisé !");
@@ -86,7 +84,7 @@ namespace TpComptesBancaires
 
         public bool Superieur(Compte _autreCompte)
         {
-            if(Solde > _autreCompte.Solde)
+            if (Solde > _autreCompte.Solde)
             {
                 return true;
             }

@@ -79,12 +79,18 @@ namespace TpFraction
             //Fraction f = new Fraction(-75, 90);
 
             //Console.WriteLine(f.GetPgcd().ToString());
+            //----------------------------------------------
+            //Fraction f = new Fraction(120, -150);
+            //f.Reduire();
+            // Console.WriteLine(f);
+            //Ecran.Affiche(f);
 
-            Fraction f = new Fraction(120, -150);
-            f.Reduire();
-             Console.WriteLine(f);
+            Fraction f = new Fraction(2, 9);
+            Fraction f1 = new Fraction(3, 4);
 
-            Ecran.Affiche(f);
+            //f.Somme(f1);
+
+            Console.WriteLine(Ecran.Affiche(f.Somme(f1)));
         }
     }
 }

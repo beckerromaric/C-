@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TpComptesBancaires
+namespace Banquier
 {
-    public class BanqueList
+    public class Banque
     {
         private int nbComptes;
 
@@ -16,11 +16,9 @@ namespace TpComptesBancaires
             {
                 return lesComptes;
             }
-
-           
         }
 
-        public BanqueList()
+        public Banque()
         {
             lesComptes = new List<Compte>();
             this.nbComptes = 0;
@@ -72,7 +70,7 @@ namespace TpComptesBancaires
 
         public void AjouterComptes(int _numeroCpt, string _nom, double _solde, double _decouvert)
         {
-            if(_numeroCpt < 0)
+            if (_numeroCpt < 0)
             {
                 throw new ArgumentOutOfRangeException("Vous esssayez de rentrer un numéro de compte négatif !");
             }
@@ -104,7 +102,7 @@ namespace TpComptesBancaires
 
             for (int i = 0; i < LesComptes.Count; i++)
             {
-                if(LesComptes[i].Numero == _numeroCompte)
+                if (LesComptes[i].Numero == _numeroCompte)
                 {
                     return LesComptes[i];
                 }
@@ -119,8 +117,8 @@ namespace TpComptesBancaires
                 throw new ArgumentOutOfRangeException("Vous essayez de transferer un solde négatif, demande plutôt au destinataire " +
                                                         "de t'envoyer de l'argent !!");
             }
-                _compteDestinataire.Crediter(_montant);
-                _compteProprietaire.Debiter(_montant);
+            _compteDestinataire.Crediter(_montant);
+            _compteProprietaire.Debiter(_montant);
 
         }
     }

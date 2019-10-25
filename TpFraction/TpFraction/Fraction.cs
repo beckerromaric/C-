@@ -142,15 +142,34 @@ namespace TpFraction
 
         }
 
-        //public Fraction Somme(Fraction _fraction)
-        //{
-        //    if(this.denominateur == _fraction.denominateur)
-        //    {
-        //        this.numerateur = this.numerateur + _fraction.numerateur;
-        //        return this.numerateur + this.denominateur;
-        //    }
-        //    return null;
-        //}
+        public Fraction Somme(Fraction _fraction)
+        {
+            int a = this.numerateur;
+            int b = _fraction.numerateur;
+            int c = this.denominateur;
+            int d = _fraction.denominateur;
+            int pgcd = GetPgcd();
+            double tempNum;
+            double tempDenom;
+
+            if (this.denominateur == _fraction.denominateur)
+            {
+                this.numerateur = this.numerateur + _fraction.numerateur;
+                return _fraction;
+            }
+
+            else if (this.denominateur != _fraction.denominateur)
+            {
+                _fraction.numerateur = (a * d) + (b * c);
+                _fraction.denominateur = c * d;
+
+                tempNum = _fraction.numerateur / pgcd;
+                tempNum = _fraction.numerateur / pgcd;
+
+                return _fraction;
+            }
+            return null;
+        }
         public int Numerateur
         {
             get
