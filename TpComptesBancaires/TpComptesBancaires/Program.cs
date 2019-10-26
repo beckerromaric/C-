@@ -52,13 +52,13 @@ namespace TpComptesBancaires
             //}
             ////------------------------------------------------------------------------------------------------
 
-            //Compte compte1 = new Compte(12345, "Romaric", 1000, -500);
-            //Compte compte2 = new Compte(45678, "Roro", 2000, -1000);
+            Compte compte1 = new Compte(12345, "Romaric", 1000, -500);
+            Compte compte2 = new Compte(45678, "Roro", 2000, -1000);
 
-            //    compte1.Transferer(3300, compte2);
+            compte1.Transferer(1000, compte2);
 
-            //    Console.WriteLine(compte1.Afficher());
-            //    Console.WriteLine(compte2.Afficher());
+            Console.WriteLine(compte1.Afficher());
+            Console.WriteLine(compte2.Afficher());
             //-------------------------------------------------------------------------------------------------
 
             //Compte compte1 = new Compte(12345, "Romaric", 1000, -500);
@@ -149,7 +149,7 @@ namespace TpComptesBancaires
             //Console.WriteLine(compte2.Afficher());
             //try
             //{
-                
+
             //    if (banque2.Transferer(compte1, compte2, -10))
             //    {
             //        Console.WriteLine("Transfert effectué");
@@ -166,20 +166,20 @@ namespace TpComptesBancaires
             //    Console.WriteLine(e);
             //}
             //---------------------------------------------------------
-            BanqueList banque2 = new BanqueList();
-            banque2.Init();
+            //BanqueList banque2 = new BanqueList();
+            //banque2.Init();
 
-            Compte c = banque2.CheckCompte(12345);
+            //Compte c = banque2.CheckCompte(12345);
 
 
-            if (c != null)
-            {
-                Console.WriteLine(c.Afficher());
-            }
-            else
-            {
-                Console.WriteLine("Compte inexistant");
-            }
+            //if (c != null)
+            //{
+            //    Console.WriteLine(c.Afficher());
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Compte inexistant");
+            //}
         }
     }
 }

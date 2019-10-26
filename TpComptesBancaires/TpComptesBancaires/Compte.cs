@@ -77,7 +77,7 @@ namespace TpComptesBancaires
             if ((Solde - _montant) >= DecouvertAutorise)
             {
                 Solde = Solde - _montant;
-                _autreCompte.Debiter(_montant);
+                _autreCompte.Crediter(_montant);
                 return true;
             }
 
