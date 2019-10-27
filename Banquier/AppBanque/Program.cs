@@ -11,7 +11,7 @@ namespace AppBanque
             bnp.Init();
 
             bnp.LesComptes.Add(new Compte(12456, "Haddock", 1500, -600));
-
+            Compte toto = new Compte();
             Ecran.AfficherBanque(bnp);
         }
     }
