@@ -25,12 +25,23 @@ namespace AppCompte
             //Console.WriteLine(toto.AfficherCompte());
             //Console.WriteLine(tech.AfficherCompte());
 
+            if (toto.Superieur(tech))
+            {
+                Console.WriteLine("Superieur");
+            }
+            else
+            {
+                Console.WriteLine("Inférieur");
+            }
+
             Banque cmdp = new Banque();
             cmdp.Init();
-            Console.WriteLine(cmdp.AfficherCompte());
-            cmdp.AjouterCompter(5134654521543265, "Dutronc", 4500, -500);
+            //Console.WriteLine(cmdp.AfficherCompte());
+            //cmdp.AjouterCompter(5134654521543265, "Dutronc", 4500, -500);
 
-            Console.WriteLine(cmdp.AfficherCompte()); 
+            //Console.WriteLine(cmdp.AfficherCompte()); 
+
+            Console.WriteLine(cmdp.CompteSup().AfficherCompte()); 
         }
     }
 }

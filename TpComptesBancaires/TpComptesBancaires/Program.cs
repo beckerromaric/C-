@@ -83,7 +83,7 @@ namespace TpComptesBancaires
 
             //banque.Init();
             //banque.AjouterCompte(12457, "Lolo", 4500, -500);
-            //Console.WriteLine(banque.AfficherComptes());
+            ////Console.WriteLine(banque.AfficherComptes());
 
             //Console.WriteLine(banque.CompteSuperieur().Afficher());
 

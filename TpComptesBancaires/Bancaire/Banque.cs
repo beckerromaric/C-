@@ -30,7 +30,7 @@ namespace Banquier
 
         private void AjouterCompte(Compte _compte)
         {
-            lesComptes[nbComptes] = _compte;
+            lesComptes[nbComptes++] = _compte;
         }
 
         public string AfficherCompte()
@@ -45,6 +45,20 @@ namespace Banquier
                 }
             }
             return str;
+        }
+
+        public Compte CompteSup()
+        {
+            Compte min = lesComptes[0];
+
+            for(int i = 1; i < nbComptes; i++)
+            {
+                if (lesComptes[i].Superieur(min))
+                {
+                    min = lesComptes[i];
+                }
+            }
+            return min;
         }
 
         public void AjouterCompter(Int64 _numeroCompte, string _nom, double _solde, double _debitAutorise)

@@ -64,7 +64,14 @@ namespace Banquier
             return false;
         }
 
-        //public bool 
+        public bool Superieur(Compte _autreCompte)
+        {
+            if(Solde > _autreCompte.Solde)
+            {
+                return true;
+            }
+            return false;
+        }
 
         public string AfficherCompte()
         {
