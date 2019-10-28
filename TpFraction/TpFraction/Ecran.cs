@@ -7,7 +7,7 @@ namespace TpFraction
     class Ecran
     {
         public static string Affiche(Fraction _fraction)
-        {          
+        {
             if (_fraction.Denominateur.Equals(0))
             {
                 return _fraction.Numerateur.ToString();

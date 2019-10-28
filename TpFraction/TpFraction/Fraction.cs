@@ -4,8 +4,13 @@ using System.Text;
 
 namespace TpFraction
 {
-    class Fraction
+    class Fraction /*: IComparable*/
     {
+        //pour le prochain exercice
+        //public int CompareTo(object obj)
+        //{
+        //    return Numerateur.CompareTo(obj);
+        //}
         private int numerateur;
         private int denominateur;
 
@@ -68,113 +73,150 @@ namespace TpFraction
 
         private int GetPgcd()
         {
-            //int a = this.numerateur;
-            //int b = this.denominateur;
-            //int temp,resultat;
-            //int pgcd = 1;
+            int pgcd = 1,
+                a = this.Numerateur,
+                b = this.Denominateur,
+                temp = 0;
 
-            //if(b > a)
-            //{
-            //    temp = a;
-            //    a = b;
-            //    b = temp;
-            //}
-            //do
-            //{
-            //    resultat = a % b;
-            //    a = b;
-            //    b = resultat;
-
-            //}
-            //while (resultat != 0);
-
-            //return a;
-
-            int x = Numerateur;
-            int y = Denominateur;
-            int m;
-
-            // check if numerator is greater than the denominator, 
-            // make m equal to denominator if so
-            if (x > y)
-                m = y;
-            else
-                // if not, make m equal to the numerator
-                m = x;
-
-            // assign i to equal to m, make sure if i is greater
-            // than or equal to 1, then take away from it
-            for (int i = m; i >= 1; i--)
+            if(a != 0 && b != 0)
             {
-                if (x % i == 0 && y % i == 0)
+                if(a < 0)
                 {
-                    //return the value of i
-                    return i;
+                    a = -a;
                 }
+                if(b < 0)
+                {
+                    b = -b;
+                }
+
+                do
+                {
+                    if(a < b)
+                    {
+                        temp = a;
+                        a = b;
+                        b = temp;
+                    }
+
+                    a -= b;
+
+                } while (a != b);
+
+                pgcd = a;
             }
 
-            return 1;
+            return pgcd;
         }
-
-        public void Reduire()
+        private void Reduire()
         {
-            int pgcd = GetPgcd();
+            int pgcd = this.GetPgcd();
 
             if(pgcd != 0)
             {
-                this.numerateur = Numerateur / pgcd;
-                this.denominateur = Denominateur / pgcd;
+                 Numerateur /= pgcd;
+                 Denominateur /= pgcd;
             }
-            //if (Denominateur < 0)
-            //{
-            //    this.denominateur = Denominateur * -1;
-            //    this.numerateur = Numerateur * -1;
-            //}
 
-            //if (this.numerateur < 0 && this.denominateur < 0)
-            //{
-            //    this.numerateur = -this.numerateur;
-            //    this.denominateur = -this.denominateur;
-            //}
-
-            //this.numerateur = this.numerateur / pgcd;
-            //this.denominateur = this.denominateur / pgcd;
-
+            if (this.numerateur > 0 && this.denominateur < 0)
+            {
+                this.numerateur = -this.numerateur;
+                this.denominateur = -this.denominateur;
+            }
         }
 
         public Fraction Somme(Fraction _fraction)
         {
-            int a = this.numerateur;
-            int b = _fraction.numerateur;
-            int c = this.denominateur;
-            int d = _fraction.denominateur;
-            int pgcd = GetPgcd();
-            double tempNum;
-            double tempDenom;
-
             if (this.denominateur == _fraction.denominateur)
             {
-                this.numerateur = this.numerateur + _fraction.numerateur;
+                _fraction.numerateur += this.numerateur;
+
                 return _fraction;
             }
-
-            else if (this.denominateur != _fraction.denominateur)
+            else
             {
-                _fraction.numerateur = (a * d) + (b * c);
-                _fraction.denominateur = c * d;
-
-                tempNum = _fraction.numerateur / pgcd;
-                tempNum = _fraction.numerateur / pgcd;
+                _fraction.numerateur = (Numerateur * _fraction.Denominateur) + (_fraction.Numerateur * Denominateur);
+                _fraction.denominateur = Denominateur * _fraction.Denominateur;
 
                 return _fraction;
             }
-            return null;
         }
+
+        public Fraction Difference(Fraction _fraction2)
+        {
+            Fraction resultat;
+
+            if (Denominateur == _fraction2.Denominateur)
+            {
+                 this.numerateur -=_fraction2.numerateur;
+                resultat = new Fraction(Numerateur, Denominateur);
+
+                return resultat;
+            }
+            else
+            {
+                int a = (Numerateur * _fraction2.Denominateur) - (_fraction2.Numerateur * Denominateur);
+                int b = Denominateur * _fraction2.Denominateur;
+
+                resultat = new Fraction(a, b);
+
+                return resultat;
+            }
+            
+        }
+
+        public Fraction Produit(Fraction _fraction2)
+        {
+            Fraction resultat;
+
+            int a = (Numerateur * _fraction2.Numerateur);
+            int b = (Denominateur * _fraction2.Denominateur);
+
+            resultat = new Fraction(_fraction2.numerateur, _fraction2.denominateur);
+
+            return resultat;
+        }
+
+        public Fraction Quotient(Fraction _fraction2)
+        {
+            if(Denominateur == 0 || _fraction2.denominateur == 0)
+            {
+                throw new ArgumentOutOfRangeException("Opération impossible ! Le dénominateur ne peux pas être égal à 0!");
+            }
+
+            Fraction resultat;
+
+            int a = Numerateur * _fraction2.Denominateur;
+            int b = Denominateur * _fraction2.Numerateur;
+
+            resultat = new Fraction(a, b);
+            return resultat;
+
+        }
+
+        public Fraction Puissance(int exposant)
+        {
+            Fraction resultat = null;
+
+            for (int i = 0; i < exposant; i++)
+            {
+                Numerateur = Numerateur * Numerateur;
+                Denominateur = Denominateur * Denominateur;
+            }
+
+            resultat = new Fraction(Numerateur, Denominateur);
+  
+            return resultat;
+        }
+
         public int Numerateur
         {
             get
             {
                 return numerateur;
+            }
+            set
+            {
+                numerateur = value;
             }
         }
 
@@ -183,6 +225,10 @@ namespace TpFraction
             get
             {
                 return denominateur;
+            }
+            set
+            {
+                denominateur = value;
             }
         }
 

@@ -82,15 +82,39 @@ namespace TpFraction
             //----------------------------------------------
             //Fraction f = new Fraction(120, -150);
             //f.Reduire();
-            // Console.WriteLine(f);
-            //Ecran.Affiche(f);
+            //Console.WriteLine(Ecran.Affiche(f));
 
-            Fraction f = new Fraction(2, 9);
-            Fraction f1 = new Fraction(3, 4);
 
-            //f.Somme(f1);
+            //Soustraction et additions
+            //--------------------------------------------------
 
-            Console.WriteLine(Ecran.Affiche(f.Somme(f1)));
+            //Fraction f = new Fraction(2, 9);
+            //Fraction f1 = new Fraction(3, 4);
+
+            //Console.WriteLine(Ecran.Affiche(f.Somme(f1)));
+            //Console.WriteLine(Ecran.Affiche(f.Difference(f1)));
+
+            //Multiplication
+            //------------------------------------------------------------------------
+
+            //Fraction f = new Fraction(5, 3);
+            //Fraction f1 = new Fraction(7, 6);
+            //Console.WriteLine(Ecran.Affiche(f.Produit(f1)));
+
+            //Division
+            //---------------------------------------------------------------
+            //Fraction f = new Fraction(1, 2);
+            //Fraction f1 = new Fraction(3, 4);
+            //Console.WriteLine(Ecran.Affiche(f.Quotient(f1)));
+
+
+            //Puissance
+            //-----------------------------------------------------------------------
+
+            Fraction f = new Fraction(12, 16);
+
+            Console.WriteLine(Ecran.Affiche(f.Puissance(2)));
         }
+
     }
 }
