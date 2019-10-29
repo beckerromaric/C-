@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Banquier
 {
@@ -137,6 +138,16 @@ namespace Banquier
         {
             //return "\nNuméro compte : " + Numero + " Nom client: " + NomClient + " Solde: " + Solde + " Découvert Autorisé" + DecouvertAutorise + "\n";
             return ($"Numéro compte : {this.Numero.ToString("0000-0000-0000-0000")} \nNom : {this.nomClient.ToString()} \nSolde : {this.solde.ToString()} Euros \nDécouvert autorisé: {this.decouvertAutorise.ToString()} Euros");
+        }
+
+        public override string ToString()
+        {
+            StringBuilder tostring = new StringBuilder();
+            tostring.AppendFormat($"Numéro de compte: {this.Numero.ToString("0000-0000-0000-0000")}\n")
+                    .AppendFormat("Nom: {0}\n", this.NomClient)
+                    .AppendFormat("Solde: {0} euros\n", this.Solde)
+                    .AppendFormat("Découvert autorisé: {0}", this.DecouvertAutorise);
+            return tostring.ToString();
         }
     }
 }

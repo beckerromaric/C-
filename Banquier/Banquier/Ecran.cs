@@ -8,17 +8,17 @@ namespace Banquier
     {
         public static void AfficherCompte(Compte _compte)
         {
-            string description = _compte.Afficher();
+            string description = _compte.ToString();
 
             Console.WriteLine(description);
         }
 
         public static void AfficherBanque(Banque _banque)
         {
-            Console.WriteLine("---------Affichage banque---------\n");
+            Console.WriteLine("---------Affichage banque---------");
             foreach (var unCompte in _banque.LesComptes)
             {
-                Console.WriteLine("----------Début de compte---------\n");
+                Console.WriteLine("----------Début de compte---------");
                 AfficherCompte(unCompte);
                 Console.WriteLine("----------Fin de compte---------\n");
             }

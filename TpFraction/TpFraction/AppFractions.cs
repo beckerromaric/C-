@@ -114,6 +114,8 @@ namespace TpFraction
             Fraction f = new Fraction(12, 16);
 
             Console.WriteLine(Ecran.Affiche(f.Puissance(2)));
+
+            
         }
 
     }

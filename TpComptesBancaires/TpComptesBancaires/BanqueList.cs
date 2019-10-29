@@ -15,9 +15,7 @@ namespace TpComptesBancaires
             get
             {
                 return lesComptes;
-            }
-
-           
+            }    
         }
 
         public BanqueList()
