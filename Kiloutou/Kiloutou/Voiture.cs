@@ -9,22 +9,22 @@ namespace Kiloutou
         private int numeroSerie;
         private string marque;
         private string modele;
-        // private List<Voiture> listVoiture;
+        private DateTime miseCirculation;
       
         public Voiture()
         {
             NumeroSerie = 0;
             Marque = "tech";
-            Modele = "tech";          
+            Modele = "tech";
+            MiseCirculation = new DateTime(2006, 04, 28);
         }
 
-        public Voiture(int _numeroSerie, string _marque, string _modele)
+        public Voiture(int _numeroSerie, string _marque, string _modele, DateTime _miseCirculation)
         {
             NumeroSerie = _numeroSerie;
             Marque = _marque;
             Modele = _modele;
-          
-
+            MiseCirculation = _miseCirculation;
         }
 
         public int NumeroSerie
@@ -66,6 +66,19 @@ namespace Kiloutou
             }
         }
 
+        public DateTime MiseCirculation
+        {
+            get
+            {
+                return miseCirculation;
+            }
+
+            set
+            {
+                miseCirculation = value;
+            }
+        }
+
         public int CompareTo(object obj)
         {
             Voiture maVoiture = (Voiture)obj;
@@ -78,7 +91,8 @@ namespace Kiloutou
             StringBuilder tostring = new StringBuilder();
             tostring.Append("Numéro de série: " + NumeroSerie + "\n")
                     .Append("Marque: " + Marque + "\n")
-                    .Append("Modèle: " + Modele + "\n");
+                    .Append("Modèle: " + Modele + "\n")
+                    .Append("Date de mise en circulation: " + MiseCirculation.ToString("dd/MM/yyyy") + "\n");
 
             return tostring.ToString();
         }

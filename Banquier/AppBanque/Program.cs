@@ -10,8 +10,9 @@ namespace AppBanque
             ConsoleKey choix;
             Random numCompte = new Random();
             int numeroCompte = numCompte.Next(100000000, 999999999);
+            int numeCompte;
             string nom = "";
-            double solde = 0, debit = 0;
+            double solde = 0, debit = 0, montant = 0;
             Compte c = new Compte(numeroCompte, nom, solde, debit); 
             Banque bnp = new Banque();
             //bnp.Init();
@@ -58,19 +59,56 @@ namespace AppBanque
 
                     case ConsoleKey.NumPad3:
                         Ecran.AfficherBanque(bnp);
-
                         break;
 
                     case ConsoleKey.NumPad4:
 
+                        Console.WriteLine("Quel est le numéro de votre compte ?");
+                        numeCompte = int.Parse(Console.ReadLine());
+                        if (bnp.CheckCompte(numeCompte) != null)
+                        {
+                            c = bnp.CheckCompte(numeCompte);                    
+                        }
+                        Console.WriteLine("De quel montant voulez vous créditer votre compte ?");
+                        montant = int.Parse(Console.ReadLine());
+                        e.Crediter(montant);
+                        Console.WriteLine("Voici votre compte avec le crédit\n" + c.Afficher() + "\n"); 
                         break;
 
                     case ConsoleKey.NumPad5:
 
+                        Console.WriteLine("Quel est le numéro de votre compte ?");
+                        numeCompte = int.Parse(Console.ReadLine());
+                        if(bnp.CheckCompte(numeCompte) != null)
+                        {
+                            c = bnp.CheckCompte(numeCompte);
+                        }
+                        Console.WriteLine("Quel est le montant que vous souhaitez débiter ?");
+                        montant = int.Parse(Console.ReadLine());
+                        c.Debiter(montant);
+                        Console.WriteLine("Voici le solde de votre compte après le débit\n" + c.Afficher() + "\n");
                         break;
 
                     case ConsoleKey.NumPad6:
-
+                        int numeroCompte1;
+                        Compte d = new Compte();
+                        Console.WriteLine("Quel est le numéro de votre compte ?");
+                        numeCompte = int.Parse(Console.ReadLine());
+                        if(bnp.CheckCompte(numeCompte) != null)
+                        {
+                            c = bnp.CheckCompte(numeCompte);
+                        }
+                        Console.WriteLine("Quel est le compte sur le quel vous voulez faire un virement ?");
+                        numeroCompte1 = int.Parse(Console.ReadLine());
+                        if(bnp.CheckCompte(numeroCompte1) != null)
+                        {
+                            d = bnp.CheckCompte(numeroCompte1);
+                        }
+                        Console.WriteLine("Quel est le montant que vous souhaitez virer ?");
+                        montant = double.Parse(Console.ReadLine());
+                        c.Transferer(montant, d);
+                        Console.WriteLine("Voici le solde de votre compte après le virement\n" + c.Afficher()+ "\n");
+                        Console.WriteLine("Voici le compte sur le quel vous avez effectué le virement" + d.Afficher() + "\n";
                         break;
 
                     case ConsoleKey.NumPad7:

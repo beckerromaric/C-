@@ -79,7 +79,7 @@ namespace Banquier
         }
 
         public Compte CompteSuperieur(int _numeroCompte)
-        {
+        {   
             Compte min = LesComptes[0];
 
             for (int i = 1; i < nbComptes; i++)
@@ -95,6 +95,7 @@ namespace Banquier
 
         public Compte CheckCompte(int _numeroCompte)
         {
+            
             if (_numeroCompte < 0)
             {
                 throw new ArgumentOutOfRangeException("Vous essayez de trouver un compte avec un numéro négatif !");

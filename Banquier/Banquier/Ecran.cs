@@ -15,7 +15,7 @@ namespace Banquier
 
         public static void AfficherBanque(Banque _banque)
         {
-            Console.WriteLine("---------Affichage banque---------");
+            Console.WriteLine("---------Affichage banque---------\n");
             foreach (var unCompte in _banque.LesComptes)
             {
                 Console.WriteLine("----------Début de compte---------");

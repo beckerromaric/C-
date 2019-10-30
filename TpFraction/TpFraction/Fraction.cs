@@ -130,13 +130,15 @@ namespace TpFraction
             {
                 _fraction.numerateur += this.numerateur;
 
-                return _fraction;
+                _fraction.Reduire();
+
+                return _fraction; 
             }
             else
             {
                 _fraction.numerateur = (Numerateur * _fraction.Denominateur) + (_fraction.Numerateur * Denominateur);
                 _fraction.denominateur = Denominateur * _fraction.Denominateur;
-
+                _fraction.Reduire();
                 return _fraction;
             }
         }
@@ -149,7 +151,7 @@ namespace TpFraction
             {
                  this.numerateur -=_fraction2.numerateur;
                 resultat = new Fraction(Numerateur, Denominateur);
-
+                resultat.Reduire();
                 return resultat;
             }
             else
@@ -158,7 +160,7 @@ namespace TpFraction
                 int b = Denominateur * _fraction2.Denominateur;
 
                 resultat = new Fraction(a, b);
-
+                resultat.Reduire();
                 return resultat;
             }
             
@@ -172,7 +174,7 @@ namespace TpFraction
             int b = (Denominateur * _fraction2.Denominateur);
 
             resultat = new Fraction(_fraction2.numerateur, _fraction2.denominateur);
-
+            resultat.Reduire();
             return resultat;
         }
 
@@ -189,6 +191,7 @@ namespace TpFraction
             int b = Denominateur * _fraction2.Numerateur;
 
             resultat = new Fraction(a, b);
+            resultat.Reduire();
             return resultat;
 
         }
