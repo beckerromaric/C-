@@ -59,13 +59,6 @@ namespace Banquier
             }
 
             return str;
-
-            //for (var i = 0; i < lesComptes.Count; i++)
-            //{
-            //    str += lesComptes[i].Afficher();
-            //}
-
-            //return str;
         }
 
         public void AjouterComptes(int _numeroCpt, string _nom, double _solde, double _decouvert)
@@ -78,18 +71,17 @@ namespace Banquier
             LesComptes.Add(new Compte(_numeroCpt, _nom, _solde, _decouvert));
         }
 
-        public Compte CompteSuperieur(int _numeroCompte)
+        public Compte CompteSuperieur()
         {   
             Compte min = LesComptes[0];
 
-            for (int i = 1; i < nbComptes; i++)
+            for (int i = 1; i < LesComptes.Count; i++)
             {
                 if (LesComptes[i].Superieur(min))
                 {
                     min = LesComptes[i];
                 }
             }
-
             return min;
         }
 
@@ -111,16 +103,22 @@ namespace Banquier
             return null;
         }
 
-        public void Transferer(Compte _compteProprietaire, Compte _compteDestinataire, double _montant)
+        public bool Transferer(Compte _compteProprietaire, Compte _compteDestinataire, double _montant)
         {
             if (_montant < 0)
             {
                 throw new ArgumentOutOfRangeException("Vous essayez de transferer un solde négatif, demande plutôt au destinataire " +
                                                         "de t'envoyer de l'argent !!");
             }
-            _compteDestinataire.Crediter(_montant);
-            _compteProprietaire.Debiter(_montant);
 
+            if((_compteDestinataire.Solde - _montant) >= _compteProprietaire.DecouvertAutorise)
+            {
+                _compteDestinataire.Crediter(_montant);
+                _compteProprietaire.Debiter(_montant);
+                return true;
+            }
+
+            return false;
         }
     }
 }

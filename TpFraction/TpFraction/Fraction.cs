@@ -174,7 +174,9 @@ namespace TpFraction
             int b = (Denominateur * _fraction2.Denominateur);
 
             resultat = new Fraction(_fraction2.numerateur, _fraction2.denominateur);
+
             resultat.Reduire();
+
             return resultat;
         }
 
@@ -191,7 +193,9 @@ namespace TpFraction
             int b = Denominateur * _fraction2.Numerateur;
 
             resultat = new Fraction(a, b);
-            resultat.Reduire();
+
+             resultat.Reduire();
+
             return resultat;
 
         }

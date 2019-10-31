@@ -8,37 +8,37 @@ namespace AppBanque
         static void Main(string[] args)
         {
             ConsoleKey choix;
-            Random numCompte = new Random();
-            int numeroCompte = numCompte.Next(100000000, 999999999);
+           
             int numeCompte;
             string nom = "";
-            double solde = 0, debit = 0, montant = 0;
-            Compte c = new Compte(numeroCompte, nom, solde, debit); 
+            double solde, debit, montant;          
             Banque bnp = new Banque();
-            //bnp.Init();
 
-            //bnp.LesComptes.Add(new Compte(12456, "Haddock", 1500, -600));
-            //Compte toto = new Compte();
-            //Ecran.AfficherBanque(bnp);
             Console.WriteLine("Bienvenue dans le programme banque");
 
             do
             {
-                Console.WriteLine("Veuillez faire un choix");
+                Random numCompte = new Random();
+                int numeroCompte = numCompte.Next(100000000, 999999999);
+                Compte c = new Compte();
+                Compte d = new Compte();
+
+                Console.WriteLine("\nVeuillez faire un choix");
                 Console.WriteLine("[1] - Créer un compte\n" +
-                                  "[2] - Afficher dernier compte crée\n" +
-                                  "[3] - Afficher tout les comptes\n"+
-                                  "[4] - Créditer un compte\n" +
-                                  "[5] - Débiter un compte\n" +
-                                  "[6] - Faire un virement\n" +
-                                  "[7] - Comparer le solde de deux comptes\n" +
-                                  "[8] - Afficher le compte avec le plus d'argent\n" +
-                                  "[Q] - Pour quitter le programme\n");
+                                  "[2] - Afficher dernier compte crée\n"+
+                                  "[3] - Initialiser des comptes aléatoires\n"+
+                                  "[4] - Afficher tout les comptes\n"+
+                                  "[5] - Créditer un compte\n" +
+                                  "[6] - Débiter un compte\n" +
+                                  "[7] - Faire un virement\n" +
+                                  "[8] - Comparer le solde de deux comptes\n" +
+                                  "[9] - Afficher le compte avec le plus d'argent\n" +
+                                  "[Echap] - Pour quitter le programme\n");
 
                 choix = Console.ReadKey().Key;
 
                 switch (choix)
-                {
+                {   //Case pour créer un compte
                     case ConsoleKey.NumPad1:
 
                         Console.WriteLine("\nVeuillez saisir votre nom");
@@ -52,16 +52,21 @@ namespace AppBanque
 
                         Console.WriteLine("\nVous avez créer le compte :\n{0}",c + "\n");
                         break;
-
+                    //Case pour afficher le dernier compte creé
                     case ConsoleKey.NumPad2:
-                        Console.WriteLine("\nVotre compte est :\n{0}", c);
+                        Console.WriteLine("\nLe dernier compte crée est :\n{0}", c);
                         break;
-
+                    //Case pour créer des comptes par défaut
                     case ConsoleKey.NumPad3:
+                        bnp.Init();
+                        Console.WriteLine("\nVous avez crée les comptes aléatoires suivants :\n" + bnp.AfficherCompte() + "\n"); 
+                        break;
+                    //Case pour afficher tout les comptes contenus dans la banque
+                    case ConsoleKey.NumPad4:
                         Ecran.AfficherBanque(bnp);
                         break;
-
-                    case ConsoleKey.NumPad4:
+                    //Case pour créditer un compte
+                    case ConsoleKey.NumPad5:
 
                         Console.WriteLine("Quel est le numéro de votre compte ?");
                         numeCompte = int.Parse(Console.ReadLine());
@@ -69,13 +74,13 @@ namespace AppBanque
                         {
                             c = bnp.CheckCompte(numeCompte);                    
                         }
-                        Console.WriteLine("De quel montant voulez vous créditer votre compte ?");
+                        Console.WriteLine("\nDe quel montant voulez vous créditer votre compte ?");
                         montant = int.Parse(Console.ReadLine());
-                        e.Crediter(montant);
-                        Console.WriteLine("Voici votre compte avec le crédit\n" + c.Afficher() + "\n"); 
+                        c.Crediter(montant);
+                        Console.WriteLine("\n1Voici votre compte avec le crédit\n" + c.Afficher() + "\n"); 
                         break;
-
-                    case ConsoleKey.NumPad5:
+                    //Case pour débiter un compte
+                    case ConsoleKey.NumPad6:
 
                         Console.WriteLine("Quel est le numéro de votre compte ?");
                         numeCompte = int.Parse(Console.ReadLine());
@@ -88,10 +93,10 @@ namespace AppBanque
                         c.Debiter(montant);
                         Console.WriteLine("Voici le solde de votre compte après le débit\n" + c.Afficher() + "\n");
                         break;
-
-                    case ConsoleKey.NumPad6:
+                    //Case pour effectuer un virement
+                    case ConsoleKey.NumPad7:
                         int numeroCompte1;
-                        Compte d = new Compte();
+                        
                         Console.WriteLine("Quel est le numéro de votre compte ?");
                         numeCompte = int.Parse(Console.ReadLine());
                         if(bnp.CheckCompte(numeCompte) != null)
@@ -106,24 +111,46 @@ namespace AppBanque
                         }
                         Console.WriteLine("Quel est le montant que vous souhaitez virer ?");
                         montant = double.Parse(Console.ReadLine());
-                        c.Transferer(montant, d);
+                        bnp.Transferer(c, d,montant);
                         Console.WriteLine("Voici le solde de votre compte après le virement\n" + c.Afficher()+ "\n");
-                        Console.WriteLine("Voici le compte sur le quel vous avez effectué le virement" + d.Afficher() + "\n";
+                        Console.WriteLine("Voici le compte sur le quel vous avez effectué le virement\n" + d.Afficher() + "\n");
                         break;
-
-                    case ConsoleKey.NumPad7:
-
-                        break;
-
+                    //Case pour comparer le solde de deux comptes
                     case ConsoleKey.NumPad8:
+                        Console.WriteLine("Quel est le premier compte que vous voulez comparer ?");
+                        numeCompte = int.Parse(Console.ReadLine());
+
+                        if(bnp.CheckCompte(numeCompte) != null)
+                        {
+                            c = bnp.CheckCompte(numeCompte);
+                        }
+                        Console.WriteLine("Quel est le deuxième compte que vous voulez comparer ?");
+                        numeCompte = int.Parse(Console.ReadLine());
+                        if(bnp.CheckCompte(numeCompte) != null)
+                        {
+                            d = bnp.CheckCompte(numeCompte);
+                        }
+                        if (c.Superieur(d)) 
+                        {
+                            Console.WriteLine("\nLe compte:\n{0}     à un solde supérieur.", c.Afficher());
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nLe compte:\n{0}     à un solde supérieur.", d.Afficher());
+                        }
 
                         break;
-
+                    //Case pour afficher le compte qui a le plus grand solde
+                    case ConsoleKey.NumPad9:
+                        Console.WriteLine("Voici le compte qui a le solde le plus haut :\n");
+                        Console.WriteLine(bnp.CompteSuperieur()); 
+                        break;
+                    //Case uniquement pour affichage d'une phrase finale
                     case ConsoleKey.Escape:
-
+                        Console.WriteLine("Vous avez décider de quitter le programme, à bientôt dans la Becker's Bank.");
                         break;
                 }
-            } while (ConsoleKey.Q != choix);
+            } while (ConsoleKey.Escape != choix);
         }
     }
 }

@@ -52,13 +52,13 @@ namespace TpComptesBancaires
             //}
             ////------------------------------------------------------------------------------------------------
 
-            Compte compte1 = new Compte(12345, "Romaric", 1000, -500);
-            Compte compte2 = new Compte(45678, "Roro", 2000, -1000);
+            //Compte compte1 = new Compte(12345, "Romaric", 1000, -500);
+            //Compte compte2 = new Compte(45678, "Roro", 2000, -1000);
 
-            compte1.Transferer(1000, compte2);
+            //compte1.Transferer(1000, compte2);
 
-            Console.WriteLine(compte1.Afficher());
-            Console.WriteLine(compte2.Afficher());
+            //Console.WriteLine(compte1.Afficher());
+            //Console.WriteLine(compte2.Afficher());
             //-------------------------------------------------------------------------------------------------
 
             //Compte compte1 = new Compte(12345, "Romaric", 1000, -500);
@@ -180,6 +180,11 @@ namespace TpComptesBancaires
             //{
             //    Console.WriteLine("Compte inexistant");
             //}
+            //-----------------------------------------------------
+            BanqueList banque2 = new BanqueList();
+            banque2.Init();
+            banque2.CompteSuperieur();
+            Console.WriteLine(); 
         }
     }
 }

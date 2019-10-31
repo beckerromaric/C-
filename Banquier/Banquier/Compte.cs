@@ -61,7 +61,7 @@ namespace Banquier
             return false;
         }
 
-        public bool Transferer(double _montant, Compte _autreCompte)
+        public bool Transferer(double _montant, Compte _autreCompte)      
         {
             if (_montant < 0)
             {
@@ -146,7 +146,7 @@ namespace Banquier
             tostring.AppendFormat($"Numéro de compte: {this.Numero.ToString("0000-0000-0000-0000")}\n")
                     .AppendFormat("Nom: {0}\n", this.NomClient)
                     .AppendFormat("Solde: {0} euros\n", this.Solde)
-                    .AppendFormat("Découvert autorisé: {0}", this.DecouvertAutorise);
+                    .AppendFormat("Découvert autorisé: {0}\n", this.DecouvertAutorise);
             return tostring.ToString();
         }
     }

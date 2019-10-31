@@ -78,11 +78,11 @@ namespace TpComptesBancaires
             LesComptes.Add(new Compte(_numeroCpt, _nom, _solde, _decouvert));
         }
 
-        public Compte CompteSuperieur(int _numeroCompte)
+        public Compte CompteSuperieur()
         {
             Compte min = LesComptes[0];
 
-            for (int i = 1; i < nbComptes; i++)
+            for (int i = 1; i < LesComptes.Count; i++)
             {
                 if (LesComptes[i].Superieur(min))
                 {

@@ -11,7 +11,7 @@ namespace Kiloutou
             Voiture v1 = x;
             Voiture v2 = y;
 
-            return v1.NumeroSerie.CompareTo(v2.NumeroSerie);
+            return x.NumeroSerie.CompareTo(y.NumeroSerie);
         }
 
         //int IComparer<Voiture>.Compare(Voiture x, Voiture y)

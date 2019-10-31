@@ -19,8 +19,8 @@ namespace AppKiloutou
             //Création de la collection typée
             List<Voiture> listVoiture = new List<Voiture>();
 
-            listVoiture.Add(new Voiture(2098, "Peugeot", "307",new DateTime(1998, 08, 24)));
-            listVoiture.Add(new Voiture(1987, "Renault", "Espace", new DateTime(2001, 09, 28)));
+            listVoiture.Add(new Voiture(100, "Peugeot", "307",new DateTime(1998, 08, 24)));
+            listVoiture.Add(new Voiture(10, "Renault", "Espace", new DateTime(2001, 09, 28)));
             listVoiture.Add(new Voiture(1203, "Lancia", "Dedra", new DateTime(1996, 10, 05)));
             listVoiture.Add(new Voiture(3049, "Bmw", "324d", new DateTime(2001, 04, 15)));
             listVoiture.Add(new Voiture(1500, "Peugeot", "406", new DateTime(1995, 12, 24)));
@@ -41,9 +41,9 @@ namespace AppKiloutou
 
             //Pour le tri défini dans la classe ParDate
 
-            ParDate parDate = new ParDate();
+            //ParDate parDate = new ParDate();
 
-            listVoiture.Sort(parDate);
+            //listVoiture.Sort(parDate);
 
             //Affichage de la collection
             foreach (Voiture voiture in listVoiture)
