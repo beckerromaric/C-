@@ -67,7 +67,7 @@ namespace Banquier
             {
                 throw new ArgumentOutOfRangeException("Vous esssayez de rentrer un numéro de compte négatif !");
             }
-
+            if(_nom != )
             LesComptes.Add(new Compte(_numeroCpt, _nom, _solde, _decouvert));
         }
 

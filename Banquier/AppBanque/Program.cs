@@ -7,6 +7,7 @@ namespace AppBanque
     {
         static void Main(string[] args)
         {
+            //Déclaration de toutes les variables et instances utiles au programme
             ConsoleKey choix;
            
             int numeCompte;
@@ -14,16 +15,17 @@ namespace AppBanque
             double solde, debit, montant;          
             Banque bnp = new Banque();
 
-            Console.WriteLine("Bienvenue dans le programme banque");
+            Random numCompte = new Random();
+            int numeroCompte = numCompte.Next(100000000, 999999999);
+            Compte c = new Compte();
+            Compte d = new Compte();
 
+            Console.WriteLine("-----______-----_____-----||  Bienvenue dans le programme banque  ||-----______-----_____-----\n\n");
+            Console.WriteLine("Pour faire votre choix utilisez le pavé numérique du clavier:");
             do
             {
-                Random numCompte = new Random();
-                int numeroCompte = numCompte.Next(100000000, 999999999);
-                Compte c = new Compte();
-                Compte d = new Compte();
 
-                Console.WriteLine("\nVeuillez faire un choix");
+
                 Console.WriteLine("[1] - Créer un compte\n" +
                                   "[2] - Afficher dernier compte crée\n"+
                                   "[3] - Initialiser des comptes aléatoires\n"+
@@ -38,7 +40,8 @@ namespace AppBanque
                 choix = Console.ReadKey().Key;
 
                 switch (choix)
-                {   //Case pour créer un compte
+                {   //Case pour créer un compte(récupération de la saisie utilisateur dans des variables pour les assigner au constructeur 
+                    //de la classse Compte (le numéro de compte est crée aléatoirement).
                     case ConsoleKey.NumPad1:
 
                         Console.WriteLine("\nVeuillez saisir votre nom");
