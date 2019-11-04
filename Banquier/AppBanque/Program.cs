@@ -29,7 +29,7 @@ namespace AppBanque
                 Console.WriteLine("[1] - Créer un compte\n" +
                                   "[2] - Afficher dernier compte crée\n"+
                                   "[3] - Initialiser des comptes aléatoires\n"+
-                                  "[4] - Afficher tout les comptes\n"+
+                                  "[4] - Afficher tous les comptes\n"+
                                   "[5] - Créditer un compte\n" +
                                   "[6] - Débiter un compte\n" +
                                   "[7] - Faire un virement\n" +
