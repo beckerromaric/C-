@@ -8,9 +8,6 @@ namespace Kiloutou
     {
         int IComparer<Voiture>.Compare(Voiture x, Voiture y)
         {
-            Voiture v1 = x;
-            Voiture v2 = y;
-
             return x.NumeroSerie.CompareTo(y.NumeroSerie);
         }
 

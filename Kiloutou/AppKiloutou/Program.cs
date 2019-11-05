@@ -46,10 +46,21 @@ namespace AppKiloutou
             //listVoiture.Sort(parDate);
 
             //Affichage de la collection
-            foreach (Voiture voiture in listVoiture)
-            {
-                Console.WriteLine(voiture);
-            }
+            //foreach (Voiture voiture in listVoiture)
+            //{
+            //    Console.WriteLine(voiture);
+            //}
+
+            //Ecran.AfficherListe(listVoiture, "Peugeot");
+
+
+            //Afficher par numéro de série 
+            //Ecran.AfficherNumero(1000, 3000, listVoiture);
+
+            //Afficher par modèle qui sont des numéros
+            Ecran e = new Ecran();
+
+            Ecran.AfficherModeleNum(324, listVoiture);
 
         }
     }

@@ -9,10 +9,7 @@ namespace Kiloutou
     {
         public int Compare(Voiture x, Voiture y)
         {
-            Voiture v1 = x;
-            Voiture v2 = y;
-
-            return v1.Modele.CompareTo(v2.Modele);
+            return x.Modele.CompareTo(y.Modele);
         }
     }
     //public int Compare(object x, object y)
