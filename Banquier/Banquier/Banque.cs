@@ -37,17 +37,7 @@ namespace Banquier
             LesComptes.Add(compte8);
             LesComptes.Add(compte9);
             LesComptes.Add(compte10);
-            //autre methode pour instancier "à la volée" mais il n'y a plus qu'un adressage (l'indice)
-            //à la place de 2 quand on utilise la methode ci-dessus.
-            //lesComptes.Add(new Compte(12345, "Jojo", 1000, -500));
-            //lesComptes.Add(new Compte(45785, "Jaja", 2000, -1000));
         }
-
-        //Inutile avec les List car maList.Add() fait la même chose
-        //private void AjouteCompte(Compte _unCompte)
-        //{
-        //    lesComptes.Add(_unCompte); 
-        //}
 
         public string AfficherCompte()
         {
@@ -87,7 +77,7 @@ namespace Banquier
 
         public Compte CheckCompte(int _numeroCompte)
         {
-            
+
             if (_numeroCompte < 0)
             {
                 throw new ArgumentOutOfRangeException("Vous essayez de trouver un compte avec un numéro négatif !");

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Kiloutou
@@ -85,6 +86,8 @@ namespace Kiloutou
 
             return this.Marque.CompareTo(maVoiture.Marque);          
         }
+
+        public static bool IsNumeric(string _verif) => _verif.All(Char.IsDigit);
 
         public override string ToString()
         {

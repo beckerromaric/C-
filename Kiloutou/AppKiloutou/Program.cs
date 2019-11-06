@@ -53,15 +53,21 @@ namespace AppKiloutou
 
             //Ecran.AfficherListe(listVoiture, "Peugeot");
 
-
+            //-----------------------------------------------------
             //Afficher par numéro de série 
+
             //Ecran.AfficherNumero(1000, 3000, listVoiture);
+            //----------------------------------------------
 
-            //Afficher par modèle qui sont des numéros
-            Ecran e = new Ecran();
+            //Recherche par modèle qui sont des numéros
 
-            Ecran.AfficherModeleNum(324, listVoiture);
+            //Ecran.AfficherModeleNum(324, listVoiture);
 
+            //------------------------------------------------------
+            //Affichage de tout les modèles qui contiennent uniquement des numéros
+            Ecran.AfficherModeleNum(listVoiture);
+
+            
         }
     }
 }
