@@ -6,50 +6,61 @@ namespace JeuDu421
 {
     public class Lancer
     {
-        private De de = new De();
-        private int d1;
-        private int d2 = 0;
-        private int d3 = 0;
+
+         De [] mesDes = new De[3]; 
+
+        public Lancer()
+        {
+            for (int i = 0; i < mesDes.Length; i++)
+            {
+                mesDes[i] = new De();
+                mesDes[i].Jeter();
+            }
+            Trier();
+        }
 
         public void LancerUnDe(int _numDe)
         {
-            if(_numDe == 3)
-            {
-                de.Jeter();
-                d1 = de.ValeurDe;
-                
-                de.Jeter();
-                d2 = de.ValeurDe;
+            mesDes[_numDe - 1].Jeter();
+            Trier();
+        }
 
-                de.Jeter();
-                d3 = de.ValeurDe;
-            }
+        private void Trier()
+        {
+            bool estTrie;
+
+            do
+            {
+                estTrie = false;
+
+                for (int i = 0; i < mesDes.Length - 1; i++)
+                {
+                    if(mesDes[i].ValeurDe < mesDes[i + 1].ValeurDe)
+                    {
+                        estTrie = true;
+                        De temp = mesDes[i];
+                        mesDes[i] = mesDes[i + 1];
+                        mesDes[i + 1] = temp;
+                    } 
+                }
+            } while (estTrie == true);
         }
 
         public bool EstGagnant()
         {
+            if(mesDes[0].ValeurDe == 4 && mesDes[1].ValeurDe == 2 && mesDes[2].ValeurDe == 1)
+            {
+                return true;
+            }
+
             return false;
         }
 
 
-        public string GetD1()
-        {
-            return d1.ToString();
+        public int GetValeurDe(int _numDe)
+        { 
+            return mesDes[_numDe - 1].ValeurDe;
         }
 
-        public string GetD2()
-        {
-            return d2.ToString();
-        }
-
-        public string GetD3()
-        {
-            return d3.ToString();
-        }
-
-        public override string ToString()
-        {
-            return d1 + "\n" + d2 + "\n" + d3;
-        }
     }
 }
