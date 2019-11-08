@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace JeuDu421
 {
     public class Lancer
     {
+        public static bool IsNumeric(string _verif) => _verif.All(Char.IsDigit);
 
-         De [] mesDes = new De[3]; 
+        De [] mesDes = new De[3]; 
 
         public Lancer()
         {
@@ -18,11 +20,17 @@ namespace JeuDu421
             }
             Trier();
         }
+        
 
         public void LancerUnDe(int _numDe)
         {
-            mesDes[_numDe - 1].Jeter();
-            Trier();
+            string temp = _numDe.ToString();
+            if (IsNumeric(temp))
+            {
+                mesDes[_numDe - 1].Jeter();
+                Trier();
+            }
+
         }
 
         private void Trier()

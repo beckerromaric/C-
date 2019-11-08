@@ -6,25 +6,26 @@ namespace JeuDu421
 {
     public class Partie
     {
+        private int nbMaxLancers;
         private int nbManche;
         private int nbPoints;
-        private int compteurPoint;
         Lancer monLancerCourant = new Lancer();
-
-
-        public int NbMaxLancers { get; } = 3;
 
         public Partie(int _nbManche)
         {
             NbPoints = _nbManche * 10;
-            //NbMaxLancers = _nbManche * 3;
-            nbManche = _nbManche;
+            NbManche = _nbManche;
+            NbMaxLancers = _nbManche * 3;
         }
+
+ 
 
         public void NouveauLancer()
         {
             monLancerCourant = new Lancer();
-            nbManche--;
+            NbrLancer = 3;
+            NbManche--;
+            
         }
 
         public void MajPoints()
@@ -48,20 +49,9 @@ namespace JeuDu421
             return true;
         }
 
-
-
-        public int NumLancer
-        {
-            get
-            {
-                return nbManche;
-            }
-
-            set
-            {
-                nbManche = value;
-            }
-        }
+        public int NbManche { get; set; }
+        public int NbrLancer { get; set; }
+        public int NbMaxLancers { get; }
 
         public int NbPoints
         {
@@ -75,5 +65,11 @@ namespace JeuDu421
                 nbPoints = value;
             }
         }
+
+        
+
+
+
+        
     }
 }

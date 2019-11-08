@@ -16,6 +16,7 @@ namespace JeuDu421
 
         public static void Afficher(Lancer _lancer)
         {
+
             for (int num = 1; num <= 3; num++)
             {
                 Console.WriteLine(_lancer.GetValeurDe(num));
