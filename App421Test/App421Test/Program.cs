@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
 using JeuDu421;
-
-namespace App421
+namespace App421Test
 {
     class Program
     {
@@ -11,7 +10,7 @@ namespace App421
         static void Main(string[] args)
         {
             int selectionManche;
-            string selectDe2, choix, selectDe;
+            string selectDe2 = "", choix, selectDe;
             Partie maPartie = new Partie(1);
             Lancer monLancer = new Lancer();
             ConsoleKey saisie = new ConsoleKey();
@@ -41,7 +40,7 @@ namespace App421
 
                     saisie = Console.ReadKey().Key;
 
-                    
+
                     switch (saisie)
                     {
                         case ConsoleKey.NumPad1:
@@ -56,7 +55,13 @@ namespace App421
                             maPartie.NbrLancer--;
                             if (maPartie.NbrLancer == 0)
                             {
-                                Console.WriteLine("Nombre de lancé épuisé pour cette manche, veuillez débuter une nouvelle manche (Choix: 1)");
+                                Console.WriteLine("Nombre de lancé épuisé pour cette manche, début d'une nouvelle manche\n");
+                                maPartie.MajPoints();
+                                Console.WriteLine("Vous avez actuellement {0} points\n", maPartie.NbPoints);
+                                maPartie.NouveauLancer();
+                                Console.WriteLine("Voici le premier tirage: ");
+                                Ecran.Afficher(monLancer);
+                                maPartie.NbrLancer--;
                             }
                             if (monLancer.EstGagnant())
                             {
@@ -69,7 +74,7 @@ namespace App421
                                 Console.WriteLine("Quel dé voulez vous relancer ?");
                                 selectDe = Console.ReadLine();
                             } while (!IsNumeric(selectDe));
-                                      
+
                             do
                             {
                                 if (IsNumeric(selectDe))
@@ -77,7 +82,7 @@ namespace App421
                                     monLancer.LancerUnDe(int.Parse(selectDe));
                                     Ecran.Afficher(monLancer);
 
-                                    Console.WriteLine("Voulez vous en lancer un autre ? (N pour annuler, sinon le numéro du dé)");                                    
+                                    Console.WriteLine("Voulez vous en lancer un autre ? (N pour annuler, sinon le numéro du dé)");
                                     selectDe2 = Console.ReadLine();
 
                                     if (IsNumeric(selectDe2))
@@ -90,11 +95,17 @@ namespace App421
 
                                     if (maPartie.NbrLancer == 0)
                                     {
-                                        Console.WriteLine("Nombre de lancé épuisé pour cette manche, veuillez débuter une nouvelle manche (Choix: 1)");
+                                        Console.WriteLine("Nombre de lancé épuisé pour cette manche, début d'une nouvelle manche");
+                                        maPartie.NouveauLancer();
+                                        maPartie.MajPoints();
+                                        Console.WriteLine("Vous avez actuellement {0} points", maPartie.NbPoints);
+                                        Console.WriteLine("Voici le premier tirage: ");
+                                        Ecran.Afficher(monLancer);
+                                        maPartie.NbrLancer--;
                                     }
                                     maPartie.NbrLancer--;
                                 }
-                            } while (!IsNumeric(selectDe));
+                            } while (!IsNumeric(selectDe2));
 
                             if (monLancer.EstGagnant())
                             {

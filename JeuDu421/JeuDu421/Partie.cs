@@ -25,7 +25,7 @@ namespace JeuDu421
             monLancerCourant = new Lancer();
             NbrLancer = 3;
             NbManche--;
-            
+            monLancerCourant.LancerUnDe(3);
         }
 
         public void MajPoints()

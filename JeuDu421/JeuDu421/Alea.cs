@@ -7,7 +7,7 @@ namespace JeuDu421
     public class Alea : Random
     {
         private static Alea monAlea = null;
-        private Alea()
+        public Alea()
         {
 
         }
