@@ -53,7 +53,7 @@ namespace App421Test
                             monLancer.LancerUnDe(3);
                             Ecran.Afficher(monLancer);
                             maPartie.NbrLancer--;
-                            if (!maPartie.EstPerdue())
+                            if (maPartie.NbrLancer == 0)
                             {
                                 Console.WriteLine("Nombre de lancé épuisé pour cette manche, début d'une nouvelle manche\n");
                                 maPartie.MajPoints();
@@ -113,14 +113,17 @@ namespace App421Test
                             }
                             break;
 
+                        case ConsoleKey.NumPad4:
+
+                            break;
                     }
                 } while (maPartie.NbrLancer != 0 /*|| ConsoleKey.Escape != saisie*/);
 
                 if (maPartie.NbrLancer == 0)
                 {
-                    Console.WriteLine("Vos 3 chances pour cette manche sont épuisées.");
+                    Console.WriteLine("Vos 3 chances pour cette manche sont épuisées. Début d'une nouvelle manche.");
                 }
-            } while (maPartie.NbMaxLancers != 0 || ConsoleKey.Escape != saisie);
+            } while (/*maPartie.NbMaxLancers != 0 ||*/ ConsoleKey.Escape != saisie || maPartie.EstPerdue());
 
 
             Console.ReadLine();

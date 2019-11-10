@@ -2,6 +2,9 @@
 using Microsoft.CodeAnalysis.Text;
 using System;
 using System.IO;
+using System.Security;
+using System.Security.Permissions;
+
 namespace TestStreamTxt
 {
     class Program
@@ -29,8 +32,36 @@ namespace TestStreamTxt
 
             //monStream.Close();
 
+            //FileInfo monFichier = new FileInfo(@"C:\Users\Bjormi\Desktop\C-\TestStreamTxt");
+            //monFichier.Create();
+
+            //FileIOPermission f = new FileIOPermission(PermissionState.None)
+            //{
+            //    AllLocalFiles = FileIOPermissionAccess.Read
+            //};
+            //try
+            //{
+            //    f.Demand();
+            //}
+            //catch (SecurityException s)
+            //{
+            //    Console.WriteLine(s.Message);
+            //}
+
+            FileIOPermission f2 = new FileIOPermission(FileIOPermissionAccess.Read, @"C:\Users\Bjormi\Desktop\C -\TestStreamTxt");
+            f2.AddPathList(FileIOPermissionAccess.Write | FileIOPermissionAccess.Read, @"C:\Users\Bjormi\Desktop\C -\TestStreamTxt");
+            //try
+            //{
+            //    f2.Demand();
+            //}
+            //catch (SecurityException s)
+            //{
+            //    Console.WriteLine(s.Message);
+            //}
             FileInfo monFichier = new FileInfo(@"C:\Users\Bjormi\Desktop\C-\TestStreamTxt");
             monFichier.Create();
+
+
         }
 
     }
