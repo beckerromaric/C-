@@ -42,11 +42,11 @@ namespace JeuDu421
 
         public bool EstPerdue()
         {
-            if(NbPoints <= 0 )
+            if (NbPoints <= 0)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         public int NbManche { get; set; }

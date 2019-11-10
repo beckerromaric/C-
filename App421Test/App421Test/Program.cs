@@ -53,7 +53,7 @@ namespace App421Test
                             monLancer.LancerUnDe(3);
                             Ecran.Afficher(monLancer);
                             maPartie.NbrLancer--;
-                            if (maPartie.NbrLancer == 0)
+                            if (!maPartie.EstPerdue())
                             {
                                 Console.WriteLine("Nombre de lancé épuisé pour cette manche, début d'une nouvelle manche\n");
                                 maPartie.MajPoints();
