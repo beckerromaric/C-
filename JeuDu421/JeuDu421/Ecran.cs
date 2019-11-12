@@ -31,5 +31,36 @@ namespace JeuDu421
             lance.LancerUnDe(1);
             Afficher(lance);
         }
+
+        public static void Recommencer(Partie _unePartie, int _nbrDe)
+        {
+            if(_nbrDe == 3)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    _unePartie.MonLancerCourant.LancerUnDe(i);
+                }
+                _unePartie.MonLancerCourant.Trier();
+            }
+            else
+            {
+                for (int i = 0; i < _nbrDe; i++)
+                {
+                    if(i == 1)
+                    {
+                        Console.WriteLine("Quel le " + i + "er dé que vous voulez rejouer ? 1, 2 ou 3 ?");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Quel est le "+ i +"ieme dé que vous voulez rejouer? 1, 2 ou 3?");
+                    }
+                    int numDe = int.Parse(Console.ReadLine());
+                    _unePartie.MonLancerCourant.LancerUnDe(numDe);
+                }
+                _unePartie.MonLancerCourant.Trier();
+                //Ecran.Afficher(_unePartie.MonLancerCourant);
+            }
+        }
     }
 }

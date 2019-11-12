@@ -7,6 +7,15 @@ namespace App421Test
     {
         public static bool IsNumeric(string _verif) => _verif.All(Char.IsDigit);
 
+        public static bool IsNumeric(string _verif)
+        {
+            if (_verif.All(char.IsDigit))
+            {
+                return true;
+            }
+            return false;
+        }
+
         static void Main(string[] args)
         {
             int selectionManche;
@@ -21,20 +30,22 @@ namespace App421Test
             maPartie = new Partie(selectionManche);
 
             Console.WriteLine("Vous avez choisis de faire une partie de {0} manches de 3 lancés chacuns, vous débutez avec {1} points", selectionManche, maPartie.NbPoints);
-
-            do
+            maPartie.NouveauLancer();
+            if (monLancer.EstGagnant())
             {
-                maPartie.NouveauLancer();
-
-                Console.WriteLine("Voici le premier tirage: ");
-                Ecran.Afficher(monLancer);
-                maPartie.NbrLancer--;
-
+                Console.WriteLine("Bravo vous avez gagné !");
+            }
+         
+            //maPartie.NbrLancer--;
+              Console.WriteLine("Voici le premier tirage: ");
+              Ecran.Afficher(monLancer);
+            do
+            { 
                 do
                 {
 
                     Console.WriteLine("Pour faire votre choix utilisez le pad numérique.");
-                    Console.WriteLine("[1] - Débuter une nouvelle manche.");
+                   
                     Console.WriteLine("[2] - Relancer tout les dés.");
                     Console.WriteLine("[3] - Relancer des dés au choix.");
 
@@ -53,20 +64,12 @@ namespace App421Test
                             monLancer.LancerUnDe(3);
                             Ecran.Afficher(monLancer);
                             maPartie.NbrLancer--;
-                            if (maPartie.NbrLancer == 0)
-                            {
-                                Console.WriteLine("Nombre de lancé épuisé pour cette manche, début d'une nouvelle manche\n");
-                                maPartie.MajPoints();
-                                Console.WriteLine("Vous avez actuellement {0} points\n", maPartie.NbPoints);
-                                maPartie.NouveauLancer();
-                                Console.WriteLine("Voici le premier tirage: ");
-                                Ecran.Afficher(monLancer);
-                                maPartie.NbrLancer--;
-                            }
+                            
                             if (monLancer.EstGagnant())
                             {
                                 Console.WriteLine("Bravo ! Vous avez gagné !");
                             }
+
                             break;
                         case ConsoleKey.NumPad3:
                             do
@@ -92,40 +95,38 @@ namespace App421Test
                                         maPartie.NbrLancer--;
                                         break;
                                     }
-
-                                    if (maPartie.NbrLancer == 0)
-                                    {
-                                        Console.WriteLine("Nombre de lancé épuisé pour cette manche, début d'une nouvelle manche");
-                                        maPartie.NouveauLancer();
-                                        maPartie.MajPoints();
-                                        Console.WriteLine("Vous avez actuellement {0} points", maPartie.NbPoints);
-                                        Console.WriteLine("Voici le premier tirage: ");
-                                        Ecran.Afficher(monLancer);
-                                        maPartie.NbrLancer--;
-                                    }
                                     maPartie.NbrLancer--;
                                 }
-                            } while (!IsNumeric(selectDe2));
+                            } while (IsNumeric(selectDe2));
 
                             if (monLancer.EstGagnant())
                             {
                                 Console.WriteLine("Bravo ! Vous avez gagner !");
+                                break;
                             }
+
                             break;
 
                         case ConsoleKey.NumPad4:
 
                             break;
                     }
-                } while (maPartie.NbrLancer != 0 /*|| ConsoleKey.Escape != saisie*/);
+                } while (maPartie.NbrLancer != 0 /*|| maPartie.EstPerdue()*/);
 
                 if (maPartie.NbrLancer == 0)
                 {
-                    Console.WriteLine("Vos 3 chances pour cette manche sont épuisées. Début d'une nouvelle manche.");
+                    Console.WriteLine("Nombre de lancé épuisé pour cette manche, début d'une nouvelle manche");
+                    maPartie.NouveauLancer();
+                    maPartie.MajPoints();
+                    Console.WriteLine("Vous avez actuellement {0} points", maPartie.NbPoints);
+                    Console.WriteLine("Voici le premier tirage: ");
+                    Ecran.Afficher(monLancer);
+                    //maPartie.NbrLancer--;
                 }
-            } while (/*maPartie.NbMaxLancers != 0 ||*/ ConsoleKey.Escape != saisie || maPartie.EstPerdue());
+            } while (ConsoleKey.Escape != saisie && maPartie.EstPerdue());
 
-
+            Console.WriteLine("Vous n'avez plus de points vous avez donc perdu, rententez votre chance!");
+            
             Console.ReadLine();
             //Ecran.Run();
 

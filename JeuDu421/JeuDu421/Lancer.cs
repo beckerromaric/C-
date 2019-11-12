@@ -18,7 +18,7 @@ namespace JeuDu421
                 mesDes[i] = new De();
                 mesDes[i].Jeter();
             }
-            Trier();
+            
         }
         
 
@@ -27,13 +27,11 @@ namespace JeuDu421
             string temp = _numDe.ToString();
             if (IsNumeric(temp))
             {
-                mesDes[_numDe - 1].Jeter();
-                Trier();
+                mesDes[_numDe - 1].Jeter();            
             }
-
         }
 
-        private void Trier()
+        public void Trier()
         {
             bool estTrie;
 
