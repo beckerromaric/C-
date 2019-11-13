@@ -80,10 +80,8 @@ namespace Kiloutou
             }
         }
 
-        public int CompareTo(object obj)
+        public int CompareTo(Voiture maVoiture)
         {
-            Voiture maVoiture = (Voiture)obj;
-
             return this.Marque.CompareTo(maVoiture.Marque);          
         }
 

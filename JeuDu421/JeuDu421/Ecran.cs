@@ -36,7 +36,7 @@ namespace JeuDu421
         {
             if(_nbrDe == 3)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 1; i <= 3; i++)
                 {
                     _unePartie.MonLancerCourant.LancerUnDe(i);
                 }
@@ -46,7 +46,7 @@ namespace JeuDu421
             {
                 for (int i = 0; i < _nbrDe; i++)
                 {
-                    if(i == 1)
+                    if(_nbrDe == 1)
                     {
                         Console.WriteLine("Quel le " + i + "er dé que vous voulez rejouer ? 1, 2 ou 3 ?");
 

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP5Jeu421", "TP5Jeu421\TP5Jeu421.csproj", "{360C26DB-CD5F-4EF8-AC96-AFADD3D871DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiblioJeu421", "BiblioJeu421\BiblioJeu421.csproj", "{1DC6611D-6C16-4D19-9BBF-6293E9337494}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{360C26DB-CD5F-4EF8-AC96-AFADD3D871DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360C26DB-CD5F-4EF8-AC96-AFADD3D871DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360C26DB-CD5F-4EF8-AC96-AFADD3D871DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360C26DB-CD5F-4EF8-AC96-AFADD3D871DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DC6611D-6C16-4D19-9BBF-6293E9337494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DC6611D-6C16-4D19-9BBF-6293E9337494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DC6611D-6C16-4D19-9BBF-6293E9337494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DC6611D-6C16-4D19-9BBF-6293E9337494}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52D92420-15E9-4BB3-BE7E-B8AFAF2071D7}
+	EndGlobalSection
+EndGlobal

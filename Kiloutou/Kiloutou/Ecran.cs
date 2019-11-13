@@ -106,7 +106,7 @@ namespace Kiloutou
         //    Console.WriteLine("\n--------Fin de l'extraction");
         //}
         public static bool IsNumeric(string _verif) => _verif.All(Char.IsDigit);
-        
+
         public static void AfficherModeleNum(List<Voiture> _flotte)
         {
             List<Voiture> resultat = _flotte.FindAll(voit => IsNumeric(voit.Modele));
