@@ -61,8 +61,8 @@ namespace App421Test
                 if (!verif)
                 {
                     Console.WriteLine("Nombre de lancé épuisé pour cette manche, début d'une nouvelle manche");
-                    Console.WriteLine("Vous avez actuellement {0} points", maPartie.NbPoints);
-                    Console.WriteLine("Voici le premier tirage: ");
+                    Console.WriteLine("\nVous avez actuellement {0} points", maPartie.NbPoints);
+                    Console.WriteLine("\nVoici le premier tirage: ");
                     Ecran.Afficher(maPartie.MonLancerCourant);
                 }
                 else
@@ -76,10 +76,12 @@ namespace App421Test
                     verif = false;
                     Console.WriteLine("Pour faire votre choix utilisez le pad numérique.");
 
-                    Console.WriteLine("[1] - Relancer tout les dés.");
-                    Console.WriteLine("[2] - Relancer des dés au choix.");
-                    Console.WriteLine("[3] - Affichage de votre score.");
-                    Console.WriteLine("[4] - Affichage du nombre d'essai restant pour cette manche.");
+                    Console.WriteLine("[1] - Relancer un dé.");
+                    Console.WriteLine("[2] - Relancer deux dés.");
+                    Console.WriteLine("[3] - Relancer tout les dés.");
+                    Console.WriteLine("[4] - Affichage du score.");
+                    Console.WriteLine("[5] - Affichage du nombre d'essai restant pour cette manche.");
+                    Console.WriteLine("[6] - Affichage du dernier lancé.");
 
                     saisie = Console.ReadKey().Key;
 
@@ -87,49 +89,33 @@ namespace App421Test
                     switch (saisie)
                     {
                         case ConsoleKey.NumPad1:
-                            Console.WriteLine("Relance des dés :");
-
-                            maPartie.MonLancerCourant.LancerUnDe(3);
-                            maPartie.MonLancerCourant.Trier();
-                            Ecran.Afficher(maPartie.MonLancerCourant);
-                            maPartie.NbrLancer--;
-
-                            if (monLancer.EstGagnant())
+                            do
                             {
-                                maPartie.MajPoints();
-                                Console.WriteLine("Bravo ! Vous avez gagné !");
+                                Console.WriteLine("\nQuel dé voulez vous relancer ?");
+                                selectDe = Console.ReadLine();
                             }
+                            while (!IsNumeric(selectDe));
 
+                            maPartie.Lancer1(int.Parse(selectDe));
+                            Ecran.Afficher(maPartie.MonLancerCourant);
                             break;
+
                         case ConsoleKey.NumPad2:
                             do
                             {
-                                Console.WriteLine("Quel dé voulez vous relancer ?");
+                                Console.WriteLine("\nQuel dé voulez vous relancer ?");
                                 selectDe = Console.ReadLine();
-                            } while (!IsNumeric(selectDe));
+                                Console.WriteLine("Quel est le deuxieme dé que vous voulez relancer?");
+                                selectDe2 = Console.ReadLine();
+                            } while (!IsNumeric(selectDe) && !IsNumeric(selectDe2) && selectDe == null);
 
 
-                            if (IsNumeric(selectDe))
+                            if (IsNumeric(selectDe) && IsNumeric(selectDe2) && selectDe != null)
                             {
-                                maPartie.MonLancerCourant.LancerUnDe(int.Parse(selectDe));
-                                maPartie.MonLancerCourant.Trier();
+                                maPartie.Lancer2(int.Parse(selectDe), int.Parse(selectDe2));
                                 Ecran.Afficher(maPartie.MonLancerCourant);
 
-                                Console.WriteLine("Voulez vous en lancer un autre ? (N pour annuler, sinon le numéro du dé)");
-                                selectDe2 = Console.ReadLine();
-
-                                if (IsNumeric(selectDe2))
-                                {
-                                    maPartie.MonLancerCourant.LancerUnDe(int.Parse(selectDe2));
-                                    maPartie.MonLancerCourant.Trier();
-                                    Ecran.Afficher(maPartie.MonLancerCourant);
-                                    maPartie.NbrLancer--;
-                                    break;
-                                }
-                                maPartie.NbrLancer--;
                             }
-                            //} while (IsNumeric(selectDe2));
-
                             if (maPartie.MonLancerCourant.EstGagnant())
                             {
                                 maPartie.MajPoints();
@@ -140,10 +126,23 @@ namespace App421Test
                             break;
 
                         case ConsoleKey.NumPad3:
-                            Console.WriteLine("\nVous avez actuellement {0} points.\n", maPartie.NbPoints);
+
+                            Console.WriteLine("\nRelance des dés :");
+
+                            maPartie.Lancer3();
+                            Ecran.Afficher(maPartie.MonLancerCourant);
+
+                            if (monLancer.EstGagnant())
+                            {
+                                Console.WriteLine("Bravo ! Vous avez gagné !");
+                            }
                             break;
 
                         case ConsoleKey.NumPad4:
+                            Console.WriteLine("\nVous avez actuellement {0} points.\n", maPartie.NbPoints);
+                            break;
+
+                        case ConsoleKey.NumPad5:
                             if(maPartie.NbrLancer == 1)
                             {
                                 Console.WriteLine("\nIl vous reste {0} lancé.\n", maPartie.NbrLancer);
@@ -153,8 +152,13 @@ namespace App421Test
                                 Console.WriteLine("\nIl vous reste {0} lancés.\n", maPartie.NbrLancer);
                             }
                             break;
+                        case ConsoleKey.NumPad6:
+
+                            Console.WriteLine("\nVoici votre dernier lancé: ");
+                            Ecran.Afficher(maPartie.MonLancerCourant);
+                            break;
                     }
-                } while (maPartie.NbrLancer != 0 && saisie != ConsoleKey.Escape /*|| maPartie.EstPerdue()*/);
+                } while (maPartie.NbrLancer != 0 && saisie != ConsoleKey.Escape && !maPartie.MonLancerCourant.EstGagnant());
 
                 if (monLancer.EstGagnant())
                 {
@@ -170,7 +174,7 @@ namespace App421Test
 
             if (saisie == ConsoleKey.Escape)
             {
-                Console.WriteLine("\n   Vous avez décider de quitter le jeu, à bientôt");
+                Console.WriteLine("\nVous avez décider de quitter le jeu, à bientôt");
             }
             else
             {

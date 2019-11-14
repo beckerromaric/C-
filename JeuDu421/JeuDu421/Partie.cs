@@ -40,6 +40,41 @@ namespace JeuDu421
             }
         }
 
+        public void Lancer1(int _de1)
+        {
+            MonLancerCourant.LancerUnDe(_de1);
+            MonLancerCourant.Trier();
+            NbrLancer--;
+            if (MonLancerCourant.EstGagnant())
+            {
+                MajPoints();
+            }
+
+        }
+
+        public void Lancer2(int _de1, int _de2)
+        {
+            MonLancerCourant.LancerUnDe(_de1);
+            MonLancerCourant.LancerUnDe(_de2);
+            MonLancerCourant.Trier();
+            NbManche--;
+            if (MonLancerCourant.EstGagnant())
+            {
+                MajPoints();
+            }
+        }
+
+        public void Lancer3()
+        {
+            MonLancerCourant.LancerUnDe(3);
+            MonLancerCourant.Trier();
+            NbrLancer--;
+            if (MonLancerCourant.EstGagnant())
+            {
+                MajPoints();
+            }
+        }
+
         public bool EstPerdue()
         {
             if (NbPoints <= 0)
