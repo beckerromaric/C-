@@ -7,6 +7,10 @@ namespace App421Test
     {
         public static bool IsNumeric(string _verif) => _verif.All(Char.IsDigit);
 
+        public static bool test_espace(char _c)
+        {
+            return (_c == 32 || _c == 9 || _c == 13);
+        }
         //public static bool IsNumeric(string _verif)
         //{
         //    if (_verif.All(char.IsDigit))
@@ -19,7 +23,7 @@ namespace App421Test
         static void Main(string[] args)
         {
             int manche;
-            string selectDe2 = "", /*choix,*/ selectDe, selectionManche;
+            string selectDe2 = "", selectDe, selectionManche;
             Partie maPartie = new Partie(1);
             Lancer monLancer = new Lancer();
             ConsoleKey saisie = new ConsoleKey();
@@ -59,7 +63,7 @@ namespace App421Test
                 }
 
                 if (!verif)
-                {
+                { 
                     Console.WriteLine("Nombre de lancé épuisé pour cette manche, début d'une nouvelle manche");
                     Console.WriteLine("\nVous avez actuellement {0} points", maPartie.NbPoints);
                     Console.WriteLine("\nVoici le premier tirage: ");
@@ -103,19 +107,27 @@ namespace App421Test
                         case ConsoleKey.NumPad2:
                             do
                             {
-                                Console.WriteLine("\nQuel dé voulez vous relancer ?");
+                                Console.WriteLine("\nQuel est le premier dé que voulez vous relancer ?");
                                 selectDe = Console.ReadLine();
                                 Console.WriteLine("Quel est le deuxieme dé que vous voulez relancer?");
                                 selectDe2 = Console.ReadLine();
-                            } while (!IsNumeric(selectDe) && !IsNumeric(selectDe2) && selectDe == null);
+
+                                if(!IsNumeric(selectDe.Trim()) && !IsNumeric(selectDe2.Trim()))
+                                {
+                                    Console.WriteLine("On a dit un chiffre!");
+                                }
+                            } while (!IsNumeric(selectDe.Trim()) && !IsNumeric(selectDe2.Trim()));
 
 
                             if (IsNumeric(selectDe) && IsNumeric(selectDe2) && selectDe != null)
                             {
-                                maPartie.Lancer2(int.Parse(selectDe), int.Parse(selectDe2));
+                                int temp = int.Parse(selectDe);
+                                int temp1 = int.Parse(selectDe2);
+                                maPartie.Lancer2(temp, temp1);
                                 Ecran.Afficher(maPartie.MonLancerCourant);
 
                             }
+                            
                             if (maPartie.MonLancerCourant.EstGagnant())
                             {
                                 maPartie.MajPoints();
@@ -180,7 +192,7 @@ namespace App421Test
             {
                 int manches = (int.Parse(selectionManche) - maPartie.NbManche);
                 Console.WriteLine("Vous n'avez plus de points vous avez donc perdu, rententez votre chance!");
-                Console.WriteLine("Vous avez disputé {0} manches et votre score final est de {1}", manches, maPartie.NbPoints);
+                Console.WriteLine("Vous avez disputé {0} manches et votre score final est de {1} points", manches, maPartie.NbPoints);
             }
 
 
