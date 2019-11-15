@@ -47,7 +47,7 @@ namespace App421Test
                     Console.WriteLine("Veuillez saisir un nombre svp !\n");
                 }
             } while (!IsNumeric(selectionManche));
-            Date = 
+            
 
             Console.WriteLine("Vous avez choisis de faire une partie de {0} manches de 3 lancés chacuns, vous débutez avec {1} points", selectionManche, maPartie.NbPoints);
 
