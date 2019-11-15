@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using JeuDu421;
+using Microsoft.OData.Edm;
+
 namespace App421Test
 {
     class Program
@@ -23,7 +25,7 @@ namespace App421Test
         static void Main(string[] args)
         {
             int manche;
-            string selectDe2 = "", selectDe, selectionManche;
+            string selectDe2, selectDe, selectionManche;
             Partie maPartie = new Partie(1);
             Lancer monLancer = new Lancer();
             ConsoleKey saisie = new ConsoleKey();
@@ -45,7 +47,7 @@ namespace App421Test
                     Console.WriteLine("Veuillez saisir un nombre svp !\n");
                 }
             } while (!IsNumeric(selectionManche));
-
+            Date = 
 
             Console.WriteLine("Vous avez choisis de faire une partie de {0} manches de 3 lancés chacuns, vous débutez avec {1} points", selectionManche, maPartie.NbPoints);
 
