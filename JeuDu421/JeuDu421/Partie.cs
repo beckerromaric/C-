@@ -48,6 +48,7 @@ namespace JeuDu421
             if (MonLancerCourant.EstGagnant())
             {
                 MajPoints();
+                NbManche--;
             }
 
         }
@@ -57,10 +58,11 @@ namespace JeuDu421
             MonLancerCourant.LancerUnDe(_de1);
             MonLancerCourant.LancerUnDe(_de2);
             MonLancerCourant.Trier();
-            NbManche--;
+            NbrLancer--;
             if (MonLancerCourant.EstGagnant())
             {
                 MajPoints();
+                NbManche--;
             }
         }
 
@@ -72,6 +74,7 @@ namespace JeuDu421
             if (MonLancerCourant.EstGagnant())
             {
                 MajPoints();
+                NbManche--;
             }
         }
 

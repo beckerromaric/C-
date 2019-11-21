@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AppTest": {
+      "commandName": "Project",
+      "commandLineArgs": "SAlut ça va ?"
+    }
+  }
+}
