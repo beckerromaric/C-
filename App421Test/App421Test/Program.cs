@@ -34,7 +34,8 @@ namespace App421Test
 
             Console.WriteLine("Bienvenue dans le jeu 4-2-1");
             do
-            {
+            {   //A TRAVAILLER
+
                 Console.WriteLine("Veuillez choisir le nombre de manches que vous souhaitez jouer:");
                 selectionManche = Console.ReadLine();
                 if (IsNumeric(selectionManche) /*|| int.Parse(selectionManche) > 0*/)
