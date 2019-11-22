@@ -123,7 +123,7 @@ namespace App421Test
 
                         case ConsoleKey.NumPad2:
                             do
-                            {
+                            {   //A REVOIR
                                 Console.WriteLine("\nQuel est le premier dé que voulez vous relancer ?");
                                 selectDe = Console.ReadLine();
                                 Console.WriteLine("Quel est le deuxieme dé que vous voulez relancer?");
