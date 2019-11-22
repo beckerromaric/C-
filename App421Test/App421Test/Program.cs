@@ -37,7 +37,7 @@ namespace App421Test
             {
                 Console.WriteLine("Veuillez choisir le nombre de manches que vous souhaitez jouer:");
                 selectionManche = Console.ReadLine();
-                if (IsNumeric(selectionManche))
+                if (IsNumeric(selectionManche) /*|| int.Parse(selectionManche) > 0*/)
                 {
                     manche = int.Parse(selectionManche);
                     maPartie = new Partie(manche);
@@ -47,7 +47,7 @@ namespace App421Test
                 {
                     Console.WriteLine("Veuillez saisir un nombre svp !\n");
                 }
-            } while (!IsNumeric(selectionManche));
+            } while (!IsNumeric(selectionManche) && int.Parse(selectionManche) > 0);
 
 
             Console.WriteLine("Vous avez choisis de faire une partie de {0} manches de 3 lancés chacuns, vous débutez avec {1} points", selectionManche, maPartie.NbPoints);
@@ -107,14 +107,14 @@ namespace App421Test
 
                                 if (!IsNumeric(selectDe))
                                 {
-                                    Console.WriteLine("Veuillez saisir une valeur entre 1 et 3!");
+                                    Console.WriteLine("Veuillez saisir une valeur numérique!");
                                 }
-                                else if (r == 0)
+                                else if (tde1 <= 0 ||tde1 >= 4)
                                 {
-                                    Console.WriteLine("Veuillez faire une saisie correcte! 1, 2 ou 3.");
+                                    Console.WriteLine("La partie se joue sur 3 dés, veuillez entrer 1, 2 ou 3.");
                                 }
                             }
-                            while ((tde1 >= 4 || tde1 <= 0));
+                            while (tde1 >= 4 || tde1 <= 0);
 
                             maPartie.Lancer1(int.Parse(selectDe));
                             Console.WriteLine("\nAffichage du lancé:\n");
