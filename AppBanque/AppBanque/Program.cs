@@ -7,16 +7,23 @@ namespace AppBanque
     {
         static void Main(string[] args)
         {
-            //Déclaration de toutes les variables et instances utiles au programme
+            //Déclaration de toutes les variables et instances utiles au programme.
+
+            //Initialisation de la variable pour la récupération de de la saisie(Appel du constructeur de ConsoleKey).
             ConsoleKey choix = new ConsoleKey();
 
             int numeCompte;
             string nom = "";
             double solde, debit, montant;
+
+            //Création de la banque:
             Banque bnp = new Banque();
 
+            //Création du Random pour les numéros de compte.
             Random numCompte = new Random();
             int numeroCompte = numCompte.Next(100000000, 999999999);
+
+            //Initialisation de deux comptes pour pouvoir les utiliser dans tout le programme.
             Compte c = new Compte();
             Compte d = new Compte();
 

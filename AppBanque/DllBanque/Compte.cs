@@ -140,6 +140,7 @@ namespace Banquier
             return ($"Numéro compte : {this.Numero.ToString("0000-0000-0000-0000")} \nNom : {this.nomClient.ToString()} \nSolde : {this.solde.ToString()} Euros \nDécouvert autorisé: {this.decouvertAutorise.ToString()} Euros");
         }
 
+        //Surcharge de la méthode ToString() avec un test du stringbuilder
         public override string ToString()
         {
             StringBuilder tostring = new StringBuilder();

@@ -61,6 +61,10 @@ namespace Banquier
             LesComptes.Add(new Compte(_numeroCpt, _nom, _solde, _decouvert));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Compte CompteSuperieur()
         {
             Compte min = LesComptes[0];
