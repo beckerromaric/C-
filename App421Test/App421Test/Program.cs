@@ -26,7 +26,7 @@ namespace App421Test
         static void Main(string[] args)
         {
             int manche, tde1, tde2;
-            string selectDe2, selectDe = "", selectionManche;
+            string selectDe2, selectDe, selectionManche;
             Partie maPartie = new Partie(1);
             Lancer monLancer = new Lancer();
             ConsoleKey saisie = new ConsoleKey();
